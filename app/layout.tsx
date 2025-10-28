@@ -17,25 +17,81 @@ const montserrat = Montserrat({
 })
 
 export const metadata: Metadata = {
-  title: "Northside 10 - Restaurant | Southern Comfort Food & Drinks",
+  metadataBase: new URL("https://thenorthside10.com"),
+  title: {
+    default: "Northside 10 - Southern Comfort Food & Craft Cocktails",
+    template: "%s | Northside 10",
+  },
   description:
-    "Your laid-back local spot serving bold, Southern-inspired comfort food with cold drinks and warm hospitality. Join us for brunch, lunch, and dinner in a relaxed atmosphere.",
+    "Experience bold Southern-inspired comfort food in a laid-back atmosphere. Daily specials, weekend brunch, craft cocktails, and warm hospitality. Dine-in or catering available.",
   keywords: [
+    "Northside 10",
     "restaurant",
     "Southern food",
     "comfort food",
     "brunch",
-    "lunch",
-    "dinner",
-    "local restaurant",
-    "Northside 10",
+    "daily specials",
+    "craft cocktails",
+    "catering",
     "Virginia restaurant",
     "American cuisine",
+    "local restaurant",
+    "weekend brunch",
   ],
-  icons: {
-    icon: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/northside_logo-q7D9Tes6yyOKDZwoDzIVvgqTIXQ2In.png",
+  authors: [{ name: "Northside 10" }],
+  creator: "Northside 10",
+  publisher: "Northside 10",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
   },
-  generator: "v0.app",
+  icons: {
+    icon: [
+      { url: "/images/design-mode/northside_logo.png" },
+      { url: "/images/northside-logo-red.png", type: "image/png" },
+    ],
+    apple: [{ url: "/images/design-mode/northside_logo.png" }],
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://thenorthside10.com",
+    siteName: "Northside 10",
+    title: "Northside 10 - Southern Comfort Food & Craft Cocktails",
+    description:
+      "Experience bold Southern-inspired comfort food in a laid-back atmosphere. Daily specials, weekend brunch, craft cocktails, and warm hospitality.",
+    images: [
+      {
+        url: "/images/design-mode/northside_logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Northside 10 Restaurant Logo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Northside 10 - Southern Comfort Food & Craft Cocktails",
+    description:
+      "Experience bold Southern-inspired comfort food in a laid-back atmosphere. Daily specials, weekend brunch, and craft cocktails.",
+    images: ["/images/design-mode/northside_logo.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    // Add your Google Search Console verification here later
+    // google: "your-verification-code",
+  },
 }
 
 export default function RootLayout({
