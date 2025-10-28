@@ -33,9 +33,13 @@ export default function CateringForm() {
 
       if (response.ok && result.success) {
         setSubmitStatus("success")
-        // Reset form
-        e.currentTarget.reset()
+        // Reset form safely
+        setTimeout(() => {
+          const form = e.currentTarget
+          if (form) form.reset()
+        }, 100)
       } else {
+        console.error("API error:", result)
         setSubmitStatus("error")
       }
     } catch (error) {
