@@ -63,7 +63,7 @@ export const metadata: Metadata = {
       "Experience bold Southern-inspired comfort food in a laid-back atmosphere. Daily specials, weekend brunch, craft cocktails, and warm hospitality.",
     images: [
       {
-        url: "/images/design-mode/northside_logo.png",
+        url: "/images/northside-logo-red.png",
         width: 1200,
         height: 1200,
         alt: "Northside 10 - Southern Comfort Food & Craft Cocktails",
