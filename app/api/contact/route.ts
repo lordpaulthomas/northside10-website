@@ -24,10 +24,15 @@ export async function POST(request: Request) {
       )
     }
 
+    // Get recipient emails (supports comma-separated list)
+    const recipientEmails = process.env.CONTACT_EMAIL 
+      ? process.env.CONTACT_EMAIL.split(',').map(e => e.trim())
+      : ["your-email@example.com"]
+
     // Send email using Resend
     const { data, error } = await resend.emails.send({
       from: "Northside 10 Website <onboarding@resend.dev>", // You'll change this to your domain later
-      to: process.env.CONTACT_EMAIL || "your-email@example.com", // Your restaurant email
+      to: recipientEmails, // Sends to all emails in the list
       replyTo: email, // Customer's email for easy reply
       subject: `New Contact Form Submission from ${name}`,
       html: `

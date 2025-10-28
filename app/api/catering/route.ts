@@ -24,10 +24,15 @@ export async function POST(request: Request) {
       )
     }
 
+    // Get recipient emails (supports comma-separated list)
+    const recipientEmails = process.env.CONTACT_EMAIL 
+      ? process.env.CONTACT_EMAIL.split(',').map(e => e.trim())
+      : ["your-email@example.com"]
+
     // Send email using Resend
     const { data, error } = await resend.emails.send({
       from: "Northside 10 Catering <onboarding@resend.dev>",
-      to: process.env.CONTACT_EMAIL || "your-email@example.com",
+      to: recipientEmails, // Sends to all emails in the list
       replyTo: email,
       subject: `New Catering Request from ${name} - ${eventDate}`,
       html: `
