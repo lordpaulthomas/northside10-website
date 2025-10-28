@@ -1,0 +1,51 @@
+import { NextResponse } from "next/server"
+import { Resend } from "resend"
+
+const resend = new Resend(process.env.RESEND_API_KEY)
+
+export async function POST(request: Request) {
+  try {
+    const body = await request.json()
+    const { name, email, phone, eventDate, guestCount, eventType, message } = body
+
+    // Validate required fields
+    if (!name || !email || !phone || !eventDate || !guestCount) {
+      return NextResponse.json(
+        { error: "Missing required fields" },
+        { status: 400 }
+      )
+    }
+
+    // Send email using Resend
+    const { data, error } = await resend.emails.send({
+      from: "Northside 10 Catering <onboarding@resend.dev>",
+      to: process.env.CONTACT_EMAIL || "your-email@example.com",
+      replyTo: email,
+      subject: `New Catering Request from ${name} - ${eventDate}`,
+      html: `
+        <h2>New Catering Request</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone:</strong> ${phone}</p>
+        <p><strong>Event Date:</strong> ${eventDate}</p>
+        <p><strong>Number of Guests:</strong> ${guestCount}</p>
+        ${eventType ? `<p><strong>Event Type:</strong> ${eventType}</p>` : ""}
+        ${message ? `<p><strong>Additional Details:</strong></p><p>${message.replace(/\n/g, "<br>")}</p>` : ""}
+      `,
+    })
+
+    if (error) {
+      console.error("Resend error:", error)
+      return NextResponse.json({ error: error.message }, { status: 500 })
+    }
+
+    return NextResponse.json({ success: true, data })
+  } catch (error) {
+    console.error("Catering form error:", error)
+    return NextResponse.json(
+      { error: "Failed to send catering request" },
+      { status: 500 }
+    )
+  }
+}
+

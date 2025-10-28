@@ -1,32 +1,45 @@
 "use client"
 
 import { useState } from "react"
-import { submitContactForm } from "@/app/actions/contact"
 
 export default function CateringForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
 
-  async function handleSubmit(formData: FormData) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
     setIsSubmitting(true)
     setSubmitStatus("idle")
 
-    // Add a field to indicate this is a catering inquiry
-    formData.append("inquiryType", "catering")
+    const formData = new FormData(e.currentTarget)
+    const data = {
+      name: `${formData.get("firstName")} ${formData.get("lastName") || ""}`.trim(),
+      email: formData.get("email") as string,
+      phone: formData.get("phone") as string,
+      eventDate: formData.get("eventDate") as string,
+      guestCount: formData.get("guestCount") as string,
+      eventType: formData.get("eventType") as string,
+      message: formData.get("message") as string,
+    }
 
     try {
-      const result = await submitContactForm(formData)
+      const response = await fetch("/api/catering", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      })
 
-      if (result.success) {
+      const result = await response.json()
+
+      if (response.ok && result.success) {
         setSubmitStatus("success")
         // Reset form
-        const form = document.getElementById("catering-form") as HTMLFormElement
-        form?.reset()
+        e.currentTarget.reset()
       } else {
         setSubmitStatus("error")
       }
     } catch (error) {
-      console.error("[v0] Form submission error:", error)
+      console.error("Form submission error:", error)
       setSubmitStatus("error")
     } finally {
       setIsSubmitting(false)
@@ -40,7 +53,7 @@ export default function CateringForm() {
         Fill out the form below and we'll get back to you shortly
       </p>
 
-      <form id="catering-form" action={handleSubmit} className="space-y-6">
+      <form id="catering-form" onSubmit={handleSubmit} className="space-y-6">
         {/* First Name and Last Name Row */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
