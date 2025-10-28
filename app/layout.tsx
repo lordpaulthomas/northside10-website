@@ -25,7 +25,22 @@ export const metadata: Metadata = {
   description:
     "Experience bold Southern-inspired comfort food in a laid-back atmosphere. Daily specials, weekend brunch, craft cocktails, and warm hospitality. Dine-in or catering available.",
   keywords: [
+    "Alexandria, VA",
+    "Alexandria restaurant",
+    "Alexandria dining",
+    "Alexandria food",
+    "Alexandria bars",
+    "Alexandria nightlife",
+    "Alexandria events",
+    "Alexandria culture",
     "Northside 10",
+    "Delray",
+    "Virginia",
+    "Virginia restaurant",
+    "Virginia dining",
+    "Virginia food",
+    "Virginia bars",
+    "Virginia nightlife",
     "restaurant",
     "Southern food",
     "comfort food",
@@ -65,8 +80,9 @@ export const metadata: Metadata = {
       {
         url: "/images/northside-logo-red.png",
         width: 1200,
-        height: 1200,
+        height: 630,
         alt: "Northside 10 - Southern Comfort Food & Craft Cocktails",
+        type: "image/png",
       },
     ],
   },
@@ -75,7 +91,7 @@ export const metadata: Metadata = {
     title: "Northside 10 - Southern Comfort Food & Craft Cocktails",
     description:
       "Experience bold Southern-inspired comfort food in a laid-back atmosphere. Daily specials, weekend brunch, and craft cocktails.",
-    images: ["/images/design-mode/northside_logo.png"],
+    images: ["/images/northside-logo-red.png"],
   },
   robots: {
     index: true,
