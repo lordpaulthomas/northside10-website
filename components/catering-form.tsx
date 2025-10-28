@@ -173,7 +173,7 @@ export default function CateringForm() {
         {submitStatus === "success" && (
           <div className="p-4 bg-green-50 border-2 border-green-500 rounded">
             <p className="text-green-700 font-sans font-semibold text-center">
-              Thank you! We've received your catering inquiry and will contact you shortly.
+              Thank you! We've received your inquiry and will get back to you about your event shortly.
             </p>
           </div>
         )}
