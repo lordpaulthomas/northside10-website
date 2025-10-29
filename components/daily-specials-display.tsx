@@ -4,8 +4,11 @@ import { useEffect, useState } from "react"
 import type { ToastMenuItem } from "@/lib/toast-api"
 
 // Shared data store to prevent multiple API calls
+// Clear cache after 2 minutes to match server-side cache
 let sharedData: any = null
 let sharedDataPromise: Promise<any> | null = null
+let sharedDataTimestamp: number = 0
+const CLIENT_CACHE_DURATION = 2 * 60 * 1000 // 2 minutes
 
 interface DailySpecialsDisplayProps {
   type: "lunch" | "dinner"
@@ -19,6 +22,14 @@ export function DailySpecialsDisplay({ type }: DailySpecialsDisplayProps) {
   useEffect(() => {
     async function loadSpecials() {
       try {
+        // Clear cache if it's expired
+        const now = Date.now()
+        if (sharedData && now - sharedDataTimestamp > CLIENT_CACHE_DURATION) {
+          console.log("Client cache expired, clearing...")
+          sharedData = null
+          sharedDataTimestamp = 0
+        }
+
         // Use shared data if available, otherwise fetch
         let data
         if (sharedData) {
@@ -29,6 +40,7 @@ export function DailySpecialsDisplay({ type }: DailySpecialsDisplayProps) {
           sharedDataPromise = fetch("/api/toast/specials").then(res => res.json())
           data = await sharedDataPromise
           sharedData = data
+          sharedDataTimestamp = now
           sharedDataPromise = null
         }
 

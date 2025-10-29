@@ -1,5 +1,9 @@
 import { NextResponse } from "next/server"
 
+// Force this route to be dynamic (no static caching)
+export const dynamic = 'force-dynamic'
+export const revalidate = 0 // Disable static caching
+
 const TOAST_API_BASE = "https://ws-api.toasttab.com"
 const TOAST_CLIENT_ID = process.env.TOAST_CLIENT_ID
 const TOAST_CLIENT_SECRET = process.env.TOAST_CLIENT_SECRET
@@ -10,7 +14,7 @@ let cachedToken: { token: string; expiresAt: number } | null = null
 
 // Cache the menu data to prevent rate limiting
 let cachedMenuData: { data: any; expiresAt: number } | null = null
-const CACHE_DURATION = 5 * 60 * 1000 // 5 minutes cache
+const CACHE_DURATION = 2 * 60 * 1000 // 2 minutes cache (reduced from 5)
 
 async function getAccessToken() {
   // Return cached token if still valid
@@ -53,7 +57,10 @@ export async function GET() {
     // Check if we have cached data that's still valid
     if (cachedMenuData && cachedMenuData.expiresAt > Date.now()) {
       console.log("Returning cached menu data")
-      return NextResponse.json(cachedMenuData.data)
+      const response = NextResponse.json(cachedMenuData.data)
+      // Set cache headers: allow caching but must revalidate
+      response.headers.set('Cache-Control', 'public, s-maxage=120, stale-while-revalidate=60')
+      return response
     }
 
     // Get access token
@@ -174,7 +181,10 @@ export async function GET() {
       expiresAt: Date.now() + CACHE_DURATION
     }
 
-    return NextResponse.json(result)
+    const response = NextResponse.json(result)
+    // Set cache headers: cache for 2 minutes, allow stale for 1 minute while revalidating
+    response.headers.set('Cache-Control', 'public, s-maxage=120, stale-while-revalidate=60')
+    return response
   } catch (error) {
     console.error("[v0] Toast API error:", error)
     
