@@ -105,7 +105,7 @@ export function Header() {
                 Rewards
               </Link>
               <a
-                href="https://fabulous-crisp-11e2dc.netlify.app/"
+                href="https://thesweetside.cafe"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block text-xl font-sans text-soft-white uppercase tracking-wide hover:text-warm-gold transition-colors"
