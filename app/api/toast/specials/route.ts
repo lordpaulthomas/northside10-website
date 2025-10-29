@@ -94,16 +94,24 @@ export async function GET() {
     
     console.log("Found", menus.length, "menus")
     
-    // Find the "Lunch Specials" and "Dinner Specials" menus
+    // Find the special menus
     const lunchMenu = menus.find((menu: any) => 
       menu.name?.toLowerCase() === 'lunch specials'
     )
     const dinnerMenu = menus.find((menu: any) => 
       menu.name?.toLowerCase() === 'dinner specials'
     )
+    const rawBarMenu = menus.find((menu: any) => 
+      menu.name?.toLowerCase() === 'raw bar specials'
+    )
+    const tacoThursdayMenu = menus.find((menu: any) => 
+      menu.name?.toLowerCase() === 'taco thursday'
+    )
     
     console.log("Lunch menu found:", lunchMenu?.name, "with", lunchMenu?.menuGroups?.length || 0, "groups")
     console.log("Dinner menu found:", dinnerMenu?.name, "with", dinnerMenu?.menuGroups?.length || 0, "groups")
+    console.log("Raw Bar menu found:", rawBarMenu?.name, "with", rawBarMenu?.menuGroups?.length || 0, "groups")
+    console.log("Taco Thursday menu found:", tacoThursdayMenu?.name, "with", tacoThursdayMenu?.menuGroups?.length || 0, "groups")
     
     // Get items from the Lunch Specials menu
     const lunchItems: any[] = []
@@ -149,8 +157,54 @@ export async function GET() {
       })
     }
     
+    // Get items from the Raw Bar Specials menu
+    const rawBarItems: any[] = []
+    if (rawBarMenu?.menuGroups) {
+      rawBarMenu.menuGroups.forEach((group: any) => {
+        if (group?.menuItems) {
+          group.menuItems.forEach((item: any) => {
+            rawBarItems.push({
+              id: item.multiLocationId || item.guid,
+              name: item.name,
+              description: item.description || '',
+              price: item.price || 0,
+              guid: item.guid,
+              visibility: item.visibility || [],
+              salesCategory: item.salesCategory?.name || 'Food',
+              image: item.image,
+              outOfStock: item.outOfStock || false
+            })
+          })
+        }
+      })
+    }
+    
+    // Get items from the Taco Thursday menu
+    const tacoThursdayItems: any[] = []
+    if (tacoThursdayMenu?.menuGroups) {
+      tacoThursdayMenu.menuGroups.forEach((group: any) => {
+        if (group?.menuItems) {
+          group.menuItems.forEach((item: any) => {
+            tacoThursdayItems.push({
+              id: item.multiLocationId || item.guid,
+              name: item.name,
+              description: item.description || '',
+              price: item.price || 0,
+              guid: item.guid,
+              visibility: item.visibility || [],
+              salesCategory: item.salesCategory?.name || 'Food',
+              image: item.image,
+              outOfStock: item.outOfStock || false
+            })
+          })
+        }
+      })
+    }
+    
     console.log("Lunch items found:", lunchItems.length)
     console.log("Dinner items found:", dinnerItems.length)
+    console.log("Raw Bar items found:", rawBarItems.length)
+    console.log("Taco Thursday items found:", tacoThursdayItems.length)
     
     const lunchSpecial = {
       name: 'Lunch Specials',
@@ -165,12 +219,28 @@ export async function GET() {
       items: dinnerItems,
       guid: dinnerMenu?.guid || ''
     }
+    
+    const rawBarSpecial = {
+      name: 'Raw Bar Specials',
+      description: rawBarMenu?.description || '',
+      items: rawBarItems,
+      guid: rawBarMenu?.guid || ''
+    }
+    
+    const tacoThursdaySpecial = {
+      name: 'Taco Thursday',
+      description: tacoThursdayMenu?.description || '',
+      items: tacoThursdayItems,
+      guid: tacoThursdayMenu?.guid || ''
+    }
 
     const result = {
       success: true,
       lunchSpecial: lunchSpecial || null,
       dinnerSpecial: dinnerSpecial || null,
-      totalItems: lunchItems.length + dinnerItems.length,
+      rawBarSpecial: rawBarSpecial || null,
+      tacoThursdaySpecial: tacoThursdaySpecial || null,
+      totalItems: lunchItems.length + dinnerItems.length + rawBarItems.length + tacoThursdayItems.length,
       message: `Successfully loaded daily specials from ToastTab`,
       cachedAt: new Date().toISOString()
     }

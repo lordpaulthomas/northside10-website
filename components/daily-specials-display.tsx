@@ -11,7 +11,7 @@ let sharedDataTimestamp: number = 0
 const CLIENT_CACHE_DURATION = 2 * 60 * 1000 // 2 minutes
 
 interface DailySpecialsDisplayProps {
-  type: "lunch" | "dinner"
+  type: "lunch" | "dinner" | "rawbar" | "tacothursday"
 }
 
 export function DailySpecialsDisplay({ type }: DailySpecialsDisplayProps) {
@@ -49,7 +49,16 @@ export function DailySpecialsDisplay({ type }: DailySpecialsDisplayProps) {
         }
 
         // Extract the appropriate special based on type
-        const special = type === "lunch" ? data.lunchSpecial : data.dinnerSpecial
+        let special
+        if (type === "lunch") {
+          special = data.lunchSpecial
+        } else if (type === "dinner") {
+          special = data.dinnerSpecial
+        } else if (type === "rawbar") {
+          special = data.rawBarSpecial
+        } else if (type === "tacothursday") {
+          special = data.tacoThursdaySpecial
+        }
         
         // Get the items array from the special
         const items = special?.items || []
@@ -85,18 +94,28 @@ export function DailySpecialsDisplay({ type }: DailySpecialsDisplayProps) {
   }
 
   if (specials.length === 0) {
+    let message = "Today's special will be updated soon!"
+    let checkBackMessage = "Check back soon for updates"
+    
+    if (type === "lunch") {
+      message = "Today's lunch special will be updated soon!"
+      checkBackMessage = "Check back this morning for updates"
+    } else if (type === "dinner") {
+      message = "Tonight's dinner special will be updated soon!"
+      checkBackMessage = "Check back this afternoon for updates"
+    } else if (type === "rawbar") {
+      message = "Today's Raw Bar Special will be updated soon!"
+      checkBackMessage = "Check back for today's fresh seafood selections"
+    } else if (type === "tacothursday") {
+      message = "Today's Taco Thursday Special will be updated soon!"
+      checkBackMessage = "Check back for today's taco selections"
+    }
+    
     return (
       <div className="text-center py-12 bg-light-grey/20 rounded-lg border-2 border-dashed border-light-grey">
         <div className="text-6xl mb-4">🍽️</div>
-        <p className="text-charcoal/70 text-lg">
-          {type === "lunch" 
-            ? "Today's lunch special will be updated soon!" 
-            : "Tonight's dinner special will be updated soon!"
-          }
-        </p>
-        <p className="text-charcoal/50 text-sm mt-2">
-          Check back {type === "lunch" ? "this morning" : "this afternoon"} for updates
-        </p>
+        <p className="text-charcoal/70 text-lg">{message}</p>
+        <p className="text-charcoal/50 text-sm mt-2">{checkBackMessage}</p>
       </div>
     )
   }

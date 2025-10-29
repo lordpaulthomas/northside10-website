@@ -545,30 +545,62 @@ function KidsMenu() {
 
 // Daily Specials Menu Component
 function SpecialsMenu() {
+  // Get current day of week (0 = Sunday, 3 = Wednesday, 4 = Thursday)
+  const dayOfWeek = new Date().getDay()
+  
+  // Wednesday = 3, Thursday = 4
+  const isWednesday = dayOfWeek === 3
+  const isThursday = dayOfWeek === 4
+  
   return (
     <div className="max-w-4xl mx-auto">
       <div className="text-center mb-12">
         <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-charcoal">Daily Specials</h1>
         <p className="font-sans text-sm md:text-base text-charcoal/70 mt-4">
-          Check back daily for our latest lunch and dinner specials, updated by our chef
+          Check back daily for our latest specials, updated by our chef
         </p>
       </div>
 
-      {/* Dynamic Lunch Special */}
-      <div className="mb-12">
-        <h2 className="font-serif text-3xl md:text-4xl mb-6 pb-2 border-b-2 border-brick-red text-center">
-          Today's Lunch Special
-        </h2>
-        <DailySpecialsDisplay type="lunch" />
-      </div>
+      {/* Wednesday: Raw Bar Specials */}
+      {isWednesday && (
+        <div className="mb-12">
+          <h2 className="font-serif text-3xl md:text-4xl mb-6 pb-2 border-b-2 border-brick-red text-center">
+            Raw Bar Specials
+          </h2>
+          <DailySpecialsDisplay type="rawbar" />
+        </div>
+      )}
 
-      {/* Dynamic Dinner Special */}
-      <div className="mb-12">
-        <h2 className="font-serif text-3xl md:text-4xl mb-6 pb-2 border-b-2 border-brick-red text-center">
-          Tonight's Dinner Special
-        </h2>
-        <DailySpecialsDisplay type="dinner" />
-      </div>
+      {/* Thursday: Taco Thursday */}
+      {isThursday && (
+        <div className="mb-12">
+          <h2 className="font-serif text-3xl md:text-4xl mb-6 pb-2 border-b-2 border-brick-red text-center">
+            Taco Thursday
+          </h2>
+          <DailySpecialsDisplay type="tacothursday" />
+        </div>
+      )}
+
+      {/* Other Days: Lunch & Dinner Specials */}
+      {!isWednesday && !isThursday && (
+        <>
+          {/* Dynamic Lunch Special */}
+          <div className="mb-12">
+            <h2 className="font-serif text-3xl md:text-4xl mb-6 pb-2 border-b-2 border-brick-red text-center">
+              Today's Lunch Special
+            </h2>
+            <DailySpecialsDisplay type="lunch" />
+          </div>
+
+          {/* Dynamic Dinner Special */}
+          <div className="mb-12">
+            <h2 className="font-serif text-3xl md:text-4xl mb-6 pb-2 border-b-2 border-brick-red text-center">
+              Tonight's Dinner Special
+            </h2>
+            <DailySpecialsDisplay type="dinner" />
+          </div>
+        </>
+      )}
     </div>
   )
 }
