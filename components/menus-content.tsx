@@ -1,14 +1,13 @@
 "use client"
 
 import { useState } from "react"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import Image from "next/image"
 import { DailySpecialsDisplay } from "@/components/daily-specials-display"
 
 type MenuCategory = "brunch" | "dinner" | "desserts" | "kids" | "specials"
 
 export function MenusContent() {
-  const [activeTab, setActiveTab] = useState<MenuCategory>("dinner")
+  const [activeTab, setActiveTab] = useState<MenuCategory>("specials")
 
   return (
     <div className="bg-soft-white">
@@ -47,64 +46,72 @@ export function MenusContent() {
         </div>
       </div>
 
-      {/* Menu Navigation Tabs */}
-      <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as MenuCategory)} className="w-full">
-        <div className="bg-warm-gray border-b border-charcoal/10">
-          <div className="container mx-auto px-4">
-            <TabsList className="w-full justify-start md:justify-center bg-transparent h-auto p-0 gap-0 overflow-x-auto flex-nowrap">
-              <TabsTrigger
-                value="brunch"
-                className="font-serif text-base md:text-lg px-4 md:px-8 py-4 rounded-none border-b-2 border-transparent data-[state=active]:border-brick-red data-[state=active]:bg-transparent data-[state=active]:text-charcoal data-[state=active]:shadow-[0_0_15px_rgba(185,28,28,0.5)] whitespace-nowrap transition-all"
-              >
-                Brunch
-              </TabsTrigger>
-              <TabsTrigger
-                value="dinner"
-                className="font-serif text-base md:text-lg px-4 md:px-8 py-4 rounded-none border-b-2 border-transparent data-[state=active]:border-brick-red data-[state=active]:bg-transparent data-[state=active]:text-charcoal data-[state=active]:shadow-[0_0_15px_rgba(185,28,28,0.5)] whitespace-nowrap transition-all"
-              >
-                Dinner
-              </TabsTrigger>
-              <TabsTrigger
-                value="desserts"
-                className="font-serif text-base md:text-lg px-4 md:px-8 py-4 rounded-none border-b-2 border-transparent data-[state=active]:border-brick-red data-[state=active]:bg-transparent data-[state=active]:text-charcoal data-[state=active]:shadow-[0_0_15px_rgba(185,28,28,0.5)] whitespace-nowrap transition-all"
-              >
-                Desserts
-              </TabsTrigger>
-              <TabsTrigger
-                value="kids"
-                className="font-serif text-base md:text-lg px-4 md:px-8 py-4 rounded-none border-b-2 border-transparent data-[state=active]:border-brick-red data-[state=active]:bg-transparent data-[state=active]:text-charcoal data-[state=active]:shadow-[0_0_15px_rgba(185,28,28,0.5)] whitespace-nowrap transition-all"
-              >
-                Kids
-              </TabsTrigger>
-              <TabsTrigger
-                value="specials"
-                className="font-serif text-base md:text-lg px-4 md:px-8 py-4 rounded-none border-b-2 border-transparent data-[state=active]:border-brick-red data-[state=active]:bg-transparent data-[state=active]:text-charcoal data-[state=active]:shadow-[0_0_15px_rgba(185,28,28,0.5)] whitespace-nowrap transition-all"
-              >
-                Daily Specials
-              </TabsTrigger>
-            </TabsList>
+      {/* Menu Navigation Buttons */}
+      <div className="bg-warm-gray py-8 md:py-12">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 max-w-5xl mx-auto">
+            <button
+              onClick={() => setActiveTab("brunch")}
+              className={`font-serif text-lg md:text-xl px-6 py-4 border-2 rounded transition-all ${
+                activeTab === "brunch"
+                  ? "bg-crimson-red border-crimson-red text-soft-white"
+                  : "bg-transparent border-charcoal text-charcoal hover:border-crimson-red hover:text-crimson-red"
+              }`}
+            >
+              Brunch
+            </button>
+            <button
+              onClick={() => setActiveTab("dinner")}
+              className={`font-serif text-lg md:text-xl px-6 py-4 border-2 rounded transition-all ${
+                activeTab === "dinner"
+                  ? "bg-crimson-red border-crimson-red text-soft-white"
+                  : "bg-transparent border-charcoal text-charcoal hover:border-crimson-red hover:text-crimson-red"
+              }`}
+            >
+              Dinner
+            </button>
+            <button
+              onClick={() => setActiveTab("desserts")}
+              className={`font-serif text-lg md:text-xl px-6 py-4 border-2 rounded transition-all ${
+                activeTab === "desserts"
+                  ? "bg-crimson-red border-crimson-red text-soft-white"
+                  : "bg-transparent border-charcoal text-charcoal hover:border-crimson-red hover:text-crimson-red"
+              }`}
+            >
+              Desserts
+            </button>
+            <button
+              onClick={() => setActiveTab("kids")}
+              className={`font-serif text-lg md:text-xl px-6 py-4 border-2 rounded transition-all ${
+                activeTab === "kids"
+                  ? "bg-crimson-red border-crimson-red text-soft-white"
+                  : "bg-transparent border-charcoal text-charcoal hover:border-crimson-red hover:text-crimson-red"
+              }`}
+            >
+              Kids
+            </button>
+            <button
+              onClick={() => setActiveTab("specials")}
+              className={`font-serif text-lg md:text-xl px-6 py-4 border-2 rounded transition-all col-span-2 md:col-span-1 ${
+                activeTab === "specials"
+                  ? "bg-crimson-red border-crimson-red text-soft-white"
+                  : "bg-transparent border-charcoal text-charcoal hover:border-crimson-red hover:text-crimson-red"
+              }`}
+            >
+              Daily Specials
+            </button>
           </div>
         </div>
+      </div>
 
-        {/* Menu Content */}
-        <div className="container mx-auto px-4 py-12 md:py-16">
-          <TabsContent value="brunch" className="mt-0">
-            <BrunchMenu />
-          </TabsContent>
-          <TabsContent value="dinner" className="mt-0">
-            <DinnerMenu />
-          </TabsContent>
-          <TabsContent value="desserts" className="mt-0">
-            <DessertsMenu />
-          </TabsContent>
-          <TabsContent value="kids" className="mt-0">
-            <KidsMenu />
-          </TabsContent>
-          <TabsContent value="specials" className="mt-0">
-            <SpecialsMenu />
-          </TabsContent>
-        </div>
-      </Tabs>
+      {/* Menu Content */}
+      <div className="container mx-auto px-4 py-12 md:py-16">
+        {activeTab === "brunch" && <BrunchMenu />}
+        {activeTab === "dinner" && <DinnerMenu />}
+        {activeTab === "desserts" && <DessertsMenu />}
+        {activeTab === "kids" && <KidsMenu />}
+        {activeTab === "specials" && <SpecialsMenu />}
+      </div>
     </div>
   )
 }

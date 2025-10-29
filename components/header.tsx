@@ -12,15 +12,15 @@ export function Header() {
     <>
       <header className="fixed top-0 left-0 right-0 z-50 bg-soft-white/95 backdrop-blur-sm border-b border-light-grey">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3">
+          <Link href="/" className="flex items-center">
             <Image
-              src="/images/design-mode/northside_logo(1).png"
+              src="/images/northside-logo.001.png"
               alt="Northside 10 Logo"
-              width={48}
-              height={48}
-              className="w-10 h-10 md:w-12 md:h-12"
+              width={400}
+              height={200}
+              className="h-20 md:h-24 w-auto transform scale-125 md:scale-150"
+              priority
             />
-            <h1 className="text-2xl md:text-3xl font-serif text-charcoal">Northside 10</h1>
           </Link>
 
           <button
@@ -35,22 +35,22 @@ export function Header() {
 
       {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-50 bg-charcoal text-soft-white flex flex-col h-screen">
-          <div className="flex-shrink-0 container mx-auto px-6 py-6">
-            <div className="flex items-center justify-between">
-              <Link href="/" className="flex items-center gap-3" onClick={() => setMobileMenuOpen(false)}>
+        <div className="fixed inset-0 z-50 flex flex-col h-screen">
+          <div className="shrink-0 bg-soft-white/95 backdrop-blur-sm border-b border-light-grey">
+            <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+              <Link href="/" className="flex items-center" onClick={() => setMobileMenuOpen(false)}>
                 <Image
-                  src="/images/design-mode/northside_logo(1).png"
+                  src="/images/northside-logo.001.png"
                   alt="Northside 10 Logo"
-                  width={48}
-                  height={48}
-                  className="w-12 h-12 invert"
+                  width={400}
+                  height={200}
+                  className="h-20 md:h-24 w-auto transform scale-125 md:scale-150"
+                  priority
                 />
-                <h2 className="text-3xl md:text-4xl font-serif text-soft-white">Northside 10</h2>
               </Link>
               <button
                 onClick={() => setMobileMenuOpen(false)}
-                className="p-2 text-warm-gold hover:text-warm-gold/80 transition-colors"
+                className="p-2 text-charcoal hover:text-crimson-red transition-colors"
                 aria-label="Close menu"
               >
                 <X className="w-8 h-8" />
@@ -58,8 +58,8 @@ export function Header() {
             </div>
           </div>
 
-          <nav className="flex-1 overflow-y-auto container mx-auto px-6 pb-8">
-            <div className="space-y-6 py-4">
+          <nav className="flex-1 overflow-y-auto bg-charcoal">
+            <div className="container mx-auto px-6 py-8 space-y-6">
               <Link
                 href="/menus"
                 className="block text-xl font-sans text-soft-white uppercase tracking-wide hover:text-warm-gold transition-colors"

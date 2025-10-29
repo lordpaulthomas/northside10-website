@@ -63,10 +63,10 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/images/design-mode/northside_logo.png" },
+      { url: "/images/northside-logo.001.png" },
       { url: "/images/northside-logo-red.png", type: "image/png" },
     ],
-    apple: [{ url: "/images/design-mode/northside_logo.png" }],
+    apple: [{ url: "/images/northside-logo.001.png" }],
   },
   openGraph: {
     type: "website",
