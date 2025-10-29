@@ -67,27 +67,27 @@ export async function GET() {
     const accessToken = await getAccessToken()
 
     // Try v2 menus endpoint first (more commonly accessible)
-    const response = await fetch(`${TOAST_API_BASE}/menus/v2/menus?restaurantGuid=${TOAST_RESTAURANT_GUID}`, {
+    const toastResponse = await fetch(`${TOAST_API_BASE}/menus/v2/menus?restaurantGuid=${TOAST_RESTAURANT_GUID}`, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
         "Toast-Restaurant-External-ID": TOAST_RESTAURANT_GUID!,
       },
     })
 
-    if (!response.ok) {
-      const errorText = await response.text()
-      console.error("Menu fetch failed:", response.status, errorText)
+    if (!toastResponse.ok) {
+      const errorText = await toastResponse.text()
+      console.error("Menu fetch failed:", toastResponse.status, errorText)
       
       // If we get a 429 error, return cached data if available
-      if (response.status === 429 && cachedMenuData) {
+      if (toastResponse.status === 429 && cachedMenuData) {
         console.log("Rate limited, returning stale cached data")
         return NextResponse.json(cachedMenuData.data)
       }
       
-      throw new Error(`Failed to fetch menus from Toast API: ${response.status} - ${errorText}`)
+      throw new Error(`Failed to fetch menus from Toast API: ${toastResponse.status} - ${errorText}`)
     }
 
-    const data = await response.json()
+    const data = await toastResponse.json()
     
     // The ToastTab API v2 returns menus as an array with embedded groups and items
     const menus = data.menus || []
@@ -181,10 +181,10 @@ export async function GET() {
       expiresAt: Date.now() + CACHE_DURATION
     }
 
-    const response = NextResponse.json(result)
+    const finalResponse = NextResponse.json(result)
     // Set cache headers: cache for 2 minutes, allow stale for 1 minute while revalidating
-    response.headers.set('Cache-Control', 'public, s-maxage=120, stale-while-revalidate=60')
-    return response
+    finalResponse.headers.set('Cache-Control', 'public, s-maxage=120, stale-while-revalidate=60')
+    return finalResponse
   } catch (error) {
     console.error("[v0] Toast API error:", error)
     
