@@ -27,17 +27,8 @@ export function MenusContent() {
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
-            {/* Center - Logo and Title */}
+            {/* Center - Title */}
             <div className="text-center flex-1">
-              <div className="flex justify-center mb-6">
-                <Image
-                  src="/images/design-mode/northside_logo.png"
-                  alt="Northside 10 Logo"
-                  width={120}
-                  height={120}
-                  className="w-24 h-24 md:w-32 md:h-32"
-                />
-              </div>
               <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl mb-2">NORTHSIDE 10</h1>
               <div className="h-1 w-24 bg-brick-red mx-auto my-4"></div>
               <p className="font-sans text-sm md:text-base uppercase tracking-widest">Restaurant Menus</p>

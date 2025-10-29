@@ -90,15 +90,20 @@ export function Header() {
               >
                 Catering & Events
               </Link>
-              <a
-                href="https://www.toasttab.com/northside10/giftcards"
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/giftcards"
                 className="block text-xl font-sans text-soft-white uppercase tracking-wide hover:text-warm-gold transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Gift Cards
-              </a>
+              </Link>
+              <Link
+                href="/rewards"
+                className="block text-xl font-sans text-soft-white uppercase tracking-wide hover:text-warm-gold transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Rewards
+              </Link>
               <a
                 href="https://fabulous-crisp-11e2dc.netlify.app/"
                 target="_blank"

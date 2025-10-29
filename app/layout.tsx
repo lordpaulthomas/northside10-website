@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Bodoni_Moda, Montserrat } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import Script from "next/script"
+import { NewsletterPopup } from "@/components/newsletter-popup"
 import "./globals.css"
 
 const bodoniModa = Bodoni_Moda({
@@ -135,6 +136,7 @@ export default function RootLayout({
       </head>
       <body className={`${montserrat.variable} ${bodoniModa.variable} font-sans antialiased`}>
         {children}
+        <NewsletterPopup />
         <Analytics />
       </body>
     </html>

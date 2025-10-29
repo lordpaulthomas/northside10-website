@@ -90,11 +90,6 @@ export default function GalleryPage() {
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-xl font-serif text-soft-white">{image.title}</h3>
-                  </div>
-                </div>
               </div>
             ))}
           </div>
