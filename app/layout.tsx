@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Bodoni_Moda, Montserrat } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
+import Script from "next/script"
 import "./globals.css"
 
 const bodoniModa = Bodoni_Moda({
@@ -117,6 +118,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-TPRER5ET1R"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-TPRER5ET1R');
+          `}
+        </Script>
+      </head>
       <body className={`${montserrat.variable} ${bodoniModa.variable} font-sans antialiased`}>
         {children}
         <Analytics />
