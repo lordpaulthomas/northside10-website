@@ -78,7 +78,7 @@ export function NewsletterPopup() {
         {/* Popup */}
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
           <div
-            className="bg-soft-white rounded-lg shadow-2xl max-w-md w-full max-h-[90vh] pointer-events-auto animate-in zoom-in-95 duration-300 relative flex flex-col"
+            className="bg-soft-white rounded-lg shadow-2xl max-w-md w-full max-h-[90vh] pointer-events-auto animate-in zoom-in-95 duration-300 relative flex flex-col overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
@@ -91,14 +91,15 @@ export function NewsletterPopup() {
             </button>
 
             {/* Content - Flex container to fill space */}
-            <div className="flex flex-col h-full p-3 pt-12">
+            <div className="flex flex-col h-full p-3 pt-12 overflow-hidden">
               {/* Toast Tab Email Marketing Form - Takes all available space */}
-              <div className="flex-1 flex flex-col min-h-0">
+              <div className="flex-1 flex flex-col min-h-0 overflow-hidden">
                 <iframe
                   src="https://www.toasttab.com/northside10/marketing-signup"
                   className="w-full h-full border-0 rounded flex-1"
                   title="Newsletter Signup"
                   style={{ minHeight: "500px" }}
+                  scrolling="auto"
                 />
               </div>
 
