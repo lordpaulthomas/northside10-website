@@ -78,51 +78,38 @@ export function NewsletterPopup() {
         {/* Popup */}
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
           <div
-            className="bg-soft-white rounded-lg shadow-2xl max-w-md w-full pointer-events-auto animate-in zoom-in-95 duration-300 relative"
+            className="bg-soft-white rounded-lg shadow-2xl max-w-md w-full max-h-[90vh] pointer-events-auto animate-in zoom-in-95 duration-300 relative flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
             <button
               onClick={handleMinimize}
-              className="absolute top-4 right-4 p-2 text-charcoal/60 hover:text-charcoal transition-colors z-10"
+              className="absolute top-2 right-2 p-2 text-charcoal/60 hover:text-charcoal transition-colors z-10 bg-soft-white/90 rounded-full"
               aria-label="Close"
             >
               <X className="w-5 h-5" />
             </button>
 
-            {/* Content */}
-            <div className="p-8">
-              {/* Logo */}
-              <div className="flex justify-center mb-6">
-                <Image
-                  src="/images/northside-logo-red.png"
-                  alt="Northside 10"
-                  width={200}
-                  height={200}
-                  className="w-40 h-40 transform scale-110"
+            {/* Content - Flex container to fill space */}
+            <div className="flex flex-col h-full p-3 pt-12">
+              {/* Toast Tab Email Marketing Form - Takes all available space */}
+              <div className="flex-1 flex flex-col min-h-0">
+                <iframe
+                  src="https://www.toasttab.com/northside10/marketing-signup"
+                  className="w-full h-full border-0 rounded flex-1"
+                  title="Newsletter Signup"
+                  style={{ minHeight: "500px" }}
                 />
               </div>
 
-              {/* Toast Tab Email Marketing Form */}
-              <div>
-                {/* Toast Tab Embedded Form */}
-                <div className="mb-4">
-                  <iframe
-                    src="https://www.toasttab.com/northside10/marketing-signup"
-                    className="w-full border-0 rounded"
-                    title="Newsletter Signup"
-                    style={{ minHeight: "400px", height: "400px" }}
-                  />
-                </div>
-
-                <button
-                  type="button"
-                  onClick={handleMinimize}
-                  className="w-full text-charcoal/60 text-sm hover:text-charcoal transition-colors"
-                >
-                  No thanks, maybe later
-                </button>
-              </div>
+              {/* Dismiss button */}
+              <button
+                type="button"
+                onClick={handleMinimize}
+                className="w-full text-charcoal/60 text-sm hover:text-charcoal transition-colors py-3 mt-2"
+              >
+                No thanks, maybe later
+              </button>
             </div>
           </div>
         </div>
