@@ -13,11 +13,11 @@ export default function CateringPage() {
           <div className="max-w-4xl mx-auto text-center mb-12 md:mb-16">
             <div className="flex justify-center mb-8">
               <Image
-                src="/images/design-mode/northside_logo(1).png"
+                src="/images/northside-l"
                 alt="Northside 10 Logo"
-                width={150}
-                height={150}
-                className="w-24 h-24 md:w-32 md:h-32 invert"
+                width={200}
+                height={100}
+                className="w-32 h-auto md:w-40"
               />
             </div>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif text-soft-white mb-6 md:mb-8">
