@@ -7,19 +7,10 @@ export default function CateringPage() {
   return (
     <>
       <Header />
-      <main className="min-h-screen bg-charcoal text-soft-white pt-24 md:pt-28 lg:pt-32 pb-16">
+      <main className="min-h-screen bg-charcoal text-soft-white pt-32 md:pt-36 lg:pt-40 pb-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {/* Hero Section */}
           <div className="max-w-4xl mx-auto text-center mb-12 md:mb-16">
-            <div className="flex justify-center mb-8">
-              <Image
-                src="/images/northside-l"
-                alt="Northside 10 Logo"
-                width={200}
-                height={100}
-                className="w-32 h-auto md:w-40"
-              />
-            </div>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif text-soft-white mb-6 md:mb-8">
               Catering & Events
             </h1>
