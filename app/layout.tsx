@@ -21,11 +21,11 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   metadataBase: new URL("https://thenorthside10.com"),
   title: {
-    default: "Northside 10 - Southern Comfort Food & Craft Cocktails",
+    default: "Northside 10 - Alexandria VA Restaurant | Southern Comfort Food & Craft Cocktails",
     template: "%s | Northside 10",
   },
   description:
-    "Experience bold Southern-inspired comfort food in a laid-back atmosphere. Daily specials, weekend brunch, craft cocktails, and warm hospitality. Dine-in or catering available.",
+    "Northside 10 restaurant in Alexandria, VA - Experience bold Southern-inspired comfort food in a laid-back atmosphere. Daily specials, weekend brunch, craft cocktails, and warm hospitality. Located in the heart of Alexandria, Virginia. Dine-in or catering available.",
   keywords: [
     "Alexandria, VA",
     "Alexandria restaurant",
@@ -75,9 +75,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://thenorthside10.com",
     siteName: "Northside 10",
-    title: "Northside 10 - Southern Comfort Food & Craft Cocktails",
+    title: "Northside 10 - Alexandria VA Restaurant | Southern Comfort Food & Craft Cocktails",
     description:
-      "Experience bold Southern-inspired comfort food in a laid-back atmosphere. Daily specials, weekend brunch, craft cocktails, and warm hospitality.",
+      "Northside 10 restaurant in Alexandria, VA - Experience bold Southern-inspired comfort food in a laid-back atmosphere. Daily specials, weekend brunch, craft cocktails, and warm hospitality.",
     images: [
       {
         url: "/images/northside-logo-red.png",
@@ -90,9 +90,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Northside 10 - Southern Comfort Food & Craft Cocktails",
+    title: "Northside 10 - Alexandria VA Restaurant | Southern Comfort Food & Craft Cocktails",
     description:
-      "Experience bold Southern-inspired comfort food in a laid-back atmosphere. Daily specials, weekend brunch, and craft cocktails.",
+      "Northside 10 restaurant in Alexandria, VA - Experience bold Southern-inspired comfort food in a laid-back atmosphere. Daily specials, weekend brunch, and craft cocktails.",
     images: ["/images/northside-logo-red.png"],
   },
   robots: {
@@ -107,8 +107,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    // Add your Google Search Console verification here later
-    // google: "your-verification-code",
+    google: "googlecbe34722cd00124c",
   },
 }
 
@@ -132,6 +131,54 @@ export default function RootLayout({
             gtag('js', new Date());
             gtag('config', 'G-TPRER5ET1R');
           `}
+        </Script>
+        
+        {/* Structured Data - Restaurant Schema */}
+        <Script id="restaurant-schema" type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Restaurant",
+            "name": "Northside 10",
+            "image": "https://thenorthside10.com/images/northside-logo-red.png",
+            "url": "https://thenorthside10.com",
+            "telephone": "+1-XXX-XXX-XXXX",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "YOUR STREET ADDRESS",
+              "addressLocality": "Alexandria",
+              "addressRegion": "VA",
+              "postalCode": "YOUR ZIP",
+              "addressCountry": "US"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "YOUR_LATITUDE",
+              "longitude": "YOUR_LONGITUDE"
+            },
+            "priceRange": "$$",
+            "servesCuisine": ["American", "Southern", "Comfort Food"],
+            "menu": "https://thenorthside10.com/menus",
+            "acceptsReservations": "True",
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                "opens": "11:00",
+                "closes": "22:00"
+              },
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Saturday", "Sunday"],
+                "opens": "10:00",
+                "closes": "23:00"
+              }
+            ],
+            "sameAs": [
+              "YOUR_FACEBOOK_URL",
+              "YOUR_INSTAGRAM_URL",
+              "YOUR_TWITTER_URL"
+            ]
+          })}
         </Script>
       </head>
       <body className={`${montserrat.variable} ${bodoniModa.variable} font-sans antialiased`}>
