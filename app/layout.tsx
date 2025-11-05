@@ -107,7 +107,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "googlecbe34722cd00124c",
+    google: "0_LcPR5U7xUKPSXYrUlrwom7LfyN8VWnfZIgEBjAa64",
   },
 }
 
@@ -121,7 +121,7 @@ export default function RootLayout({
       <head>
         {/* Google Analytics */}
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-TPRER5ET1R"
+          src="https://www.googletagmanager.com/gtag/js?id=G-K8GDH1WFR1"
           strategy="afterInteractive"
         />
         <Script id="google-analytics" strategy="afterInteractive">
@@ -129,7 +129,7 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-TPRER5ET1R');
+            gtag('config', 'G-K8GDH1WFR1');
           `}
         </Script>
         
