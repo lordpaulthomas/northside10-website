@@ -31,7 +31,7 @@ export async function POST(request: Request) {
 
     // Send email using Resend
     const { data, error } = await resend.emails.send({
-      from: "Northside 10 Website <onboarding@resend.dev>", // You'll change this to your domain later
+      from: "Northside 10 Website <contact@thenorthside10.com>",
       to: recipientEmails, // Sends to all emails in the list
       replyTo: email, // Customer's email for easy reply
       subject: `New Contact Form Submission from ${name}`,

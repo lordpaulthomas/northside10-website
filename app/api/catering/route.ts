@@ -31,7 +31,7 @@ export async function POST(request: Request) {
 
     // Send email using Resend
     const { data, error } = await resend.emails.send({
-      from: "Northside 10 Catering <onboarding@resend.dev>",
+      from: "Northside 10 Catering <catering@thenorthside10.com>",
       to: recipientEmails, // Sends to all emails in the list
       replyTo: email,
       subject: `New Catering Request from ${name} - ${eventDate}`,
