@@ -80,9 +80,9 @@ export const metadata: Metadata = {
       "Northside 10 restaurant in Alexandria, VA - Experience bold Southern-inspired comfort food in a laid-back atmosphere. Daily specials, weekend brunch, craft cocktails, and warm hospitality.",
     images: [
       {
-        url: "/images/northside-logo-red.png",
+        url: "https://opengraph.b-cdn.net/production/images/e778a7a2-7147-4d24-ae3e-f7e3d9e9ab0d.png?token=ZtevPaX1iCX3JZ7YZGMf1F3_nofSkSgWX7OzC4RPB9c&height=675&width=1200&expires=33298995759",
         width: 1200,
-        height: 630,
+        height: 675,
         alt: "Northside 10 - Southern Comfort Food & Craft Cocktails",
         type: "image/png",
       },
@@ -93,7 +93,7 @@ export const metadata: Metadata = {
     title: "Northside 10 - Alexandria VA Restaurant | Southern Comfort Food & Craft Cocktails",
     description:
       "Northside 10 restaurant in Alexandria, VA - Experience bold Southern-inspired comfort food in a laid-back atmosphere. Daily specials, weekend brunch, and craft cocktails.",
-    images: ["/images/northside-logo-red.png"],
+    images: ["https://opengraph.b-cdn.net/production/images/e778a7a2-7147-4d24-ae3e-f7e3d9e9ab0d.png?token=ZtevPaX1iCX3JZ7YZGMf1F3_nofSkSgWX7OzC4RPB9c&height=675&width=1200&expires=33298995759"],
   },
   robots: {
     index: true,
