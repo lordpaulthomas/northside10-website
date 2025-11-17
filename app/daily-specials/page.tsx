@@ -3,6 +3,12 @@
 import { DailySpecialsDisplay } from "@/components/daily-specials-display"
 
 export default function DailySpecialsPage() {
+  // Get current day of week (0 = Sunday, 3 = Wednesday, 4 = Thursday)
+  const dayOfWeek = new Date().getDay()
+  
+  const isWednesday = dayOfWeek === 3
+  const isThursday = dayOfWeek === 4
+
   return (
     <div className="min-h-screen bg-soft-white">
       {/* Header */}
@@ -22,27 +28,68 @@ export default function DailySpecialsPage() {
       <div className="py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            {/* Lunch Specials Section */}
-            <section className="mb-16">
-              <div className="text-center mb-8">
-                <h2 className="font-serif text-3xl md:text-4xl text-charcoal mb-2">
-                  Today's Lunch Special
-                </h2>
-                <div className="w-24 h-1 bg-crimson-red mx-auto"></div>
-              </div>
-              <DailySpecialsDisplay type="lunch" />
-            </section>
+            {/* Wednesday: Lunch Specials + Raw Bar Specials */}
+            {isWednesday && (
+              <>
+                <section className="mb-16">
+                  <div className="text-center mb-8">
+                    <h2 className="font-serif text-3xl md:text-4xl text-charcoal mb-2">
+                      Today's Lunch Special
+                    </h2>
+                    <div className="w-24 h-1 bg-crimson-red mx-auto"></div>
+                  </div>
+                  <DailySpecialsDisplay type="lunch" />
+                </section>
 
-            {/* Dinner Specials Section */}
-            <section className="mb-16">
-              <div className="text-center mb-8">
-                <h2 className="font-serif text-3xl md:text-4xl text-charcoal mb-2">
-                  Tonight's Dinner Special
-                </h2>
-                <div className="w-24 h-1 bg-crimson-red mx-auto"></div>
-              </div>
-              <DailySpecialsDisplay type="dinner" />
-            </section>
+                <section className="mb-16">
+                  <div className="text-center mb-8">
+                    <h2 className="font-serif text-3xl md:text-4xl text-charcoal mb-2">
+                      Raw Bar Specials
+                    </h2>
+                    <div className="w-24 h-1 bg-crimson-red mx-auto"></div>
+                  </div>
+                  <DailySpecialsDisplay type="rawbar" />
+                </section>
+              </>
+            )}
+
+            {/* Thursday: Taco Thursday */}
+            {isThursday && (
+              <section className="mb-16">
+                <div className="text-center mb-8">
+                  <h2 className="font-serif text-3xl md:text-4xl text-charcoal mb-2">
+                    Taco Thursday
+                  </h2>
+                  <div className="w-24 h-1 bg-crimson-red mx-auto"></div>
+                </div>
+                <DailySpecialsDisplay type="tacothursday" />
+              </section>
+            )}
+
+            {/* Other Days: Lunch & Dinner Specials */}
+            {!isWednesday && !isThursday && (
+              <>
+                <section className="mb-16">
+                  <div className="text-center mb-8">
+                    <h2 className="font-serif text-3xl md:text-4xl text-charcoal mb-2">
+                      Today's Lunch Special
+                    </h2>
+                    <div className="w-24 h-1 bg-crimson-red mx-auto"></div>
+                  </div>
+                  <DailySpecialsDisplay type="lunch" />
+                </section>
+
+                <section className="mb-16">
+                  <div className="text-center mb-8">
+                    <h2 className="font-serif text-3xl md:text-4xl text-charcoal mb-2">
+                      Tonight's Dinner Special
+                    </h2>
+                    <div className="w-24 h-1 bg-crimson-red mx-auto"></div>
+                  </div>
+                  <DailySpecialsDisplay type="dinner" />
+                </section>
+              </>
+            )}
 
             {/* Info Section */}
             <section className="bg-light-grey/30 rounded-lg p-8 text-center">

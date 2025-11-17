@@ -561,14 +561,25 @@ function SpecialsMenu() {
         </p>
       </div>
 
-      {/* Wednesday: Raw Bar Specials */}
+      {/* Wednesday: Lunch Specials + Raw Bar Specials */}
       {isWednesday && (
-        <div className="mb-12">
-          <h2 className="font-serif text-3xl md:text-4xl mb-6 pb-2 border-b-2 border-brick-red text-center">
-            Raw Bar Specials
-          </h2>
-          <DailySpecialsDisplay type="rawbar" />
-        </div>
+        <>
+          {/* Dynamic Lunch Special */}
+          <div className="mb-12">
+            <h2 className="font-serif text-3xl md:text-4xl mb-6 pb-2 border-b-2 border-brick-red text-center">
+              Today's Lunch Special
+            </h2>
+            <DailySpecialsDisplay type="lunch" />
+          </div>
+
+          {/* Raw Bar Specials */}
+          <div className="mb-12">
+            <h2 className="font-serif text-3xl md:text-4xl mb-6 pb-2 border-b-2 border-brick-red text-center">
+              Raw Bar Specials
+            </h2>
+            <DailySpecialsDisplay type="rawbar" />
+          </div>
+        </>
       )}
 
       {/* Thursday: Taco Thursday */}
