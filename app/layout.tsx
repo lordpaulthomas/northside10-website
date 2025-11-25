@@ -133,6 +133,12 @@ export default function RootLayout({
           `}
         </Script>
         
+        {/* inKind Partnership Script */}
+        <Script
+          src="https://inkindscript.com/inkind.js"
+          strategy="afterInteractive"
+        />
+        
         {/* Structured Data - Restaurant Schema */}
         <Script id="restaurant-schema" type="application/ld+json">
           {JSON.stringify({
