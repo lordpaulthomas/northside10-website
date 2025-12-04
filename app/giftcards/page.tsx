@@ -62,7 +62,7 @@ export default function GiftCardsPage() {
                   href="https://www.toasttab.com/northside10/giftcards"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block bg-crimson-red text-soft-white font-serif text-xl px-8 py-4 rounded-lg hover:bg-warm-gold hover:text-charcoal transition-colors shadow-lg"
+                  className="inline-block bg-crimson-red text-soft-white font-serif text-xl px-8 py-4 rounded-lg hover:bg-crimson-red/90 transition-colors shadow-lg"
                 >
                   Buy Gift Cards
                 </a>
@@ -91,7 +91,7 @@ export default function GiftCardsPage() {
                   href="https://www.toasttab.com/northside10/findcard"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block bg-crimson-red text-soft-white font-serif text-xl px-8 py-4 rounded-lg hover:bg-warm-gold hover:text-charcoal transition-colors shadow-lg"
+                  className="inline-block bg-crimson-red text-soft-white font-serif text-xl px-8 py-4 rounded-lg hover:bg-crimson-red/90 transition-colors shadow-lg"
                 >
                   Check Balance
                 </a>

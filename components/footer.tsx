@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button"
 import { Facebook, Instagram } from "lucide-react"
-import Link from "next/link"
 
 export function Footer() {
   return (
@@ -98,9 +97,9 @@ export function Footer() {
           <Button
             asChild
             variant="outline"
-            className="border-2 border-soft-white text-soft-white hover:bg-warm-gold hover:text-charcoal font-sans uppercase tracking-wide px-8 py-6 text-base bg-transparent transition-colors"
+            className="border-2 border-soft-white text-soft-white hover:bg-soft-white hover:text-charcoal font-sans uppercase tracking-wide px-8 py-6 text-base bg-transparent transition-colors"
           >
-            <Link href="/reservations">Reservations →</Link>
+            <a href="https://www.opentable.com/r/northside-10-alexandria" target="_blank" rel="noopener noreferrer">Reservations →</a>
           </Button>
         </div>
       </div>
