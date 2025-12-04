@@ -1,5 +1,4 @@
 import { Phone, Mail, MapPin } from "lucide-react"
-import Link from "next/link"
 import Image from "next/image"
 import ContactForm from "@/components/contact-form"
 import { Header } from "@/components/header"
@@ -52,12 +51,14 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <Link
-                href="/reservations"
+              <a
+                href="https://www.opentable.com/r/northside-10-alexandria"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-block mt-8 md:mt-10 px-6 md:px-8 py-3 md:py-4 bg-warm-gold text-charcoal font-sans font-semibold text-base md:text-lg uppercase tracking-wide hover:bg-warm-gold/90 transition-colors"
               >
-                Call for Reservations
-              </Link>
+                Make a Reservation
+              </a>
             </div>
 
             {/* Contact Info Section */}
