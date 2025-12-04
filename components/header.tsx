@@ -4,6 +4,7 @@ import { useState } from "react"
 import { Menu, X } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import { Button } from "@/components/ui/button"
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -11,7 +12,7 @@ export function Header() {
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50 bg-soft-white/95 backdrop-blur-sm border-b border-light-grey">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+        <div className="container mx-auto px-4 py-4 relative flex items-center justify-between gap-4">
           <Link href="/" className="flex items-center">
             <Image
               src="/images/northside-logo.001.png"
@@ -22,6 +23,31 @@ export function Header() {
               priority
             />
           </Link>
+
+          {/* Order Now and Reservations Buttons - Desktop/Tablet - Centered on screen */}
+          <div className="hidden md:flex items-center gap-4 absolute left-1/2 transform -translate-x-1/2">
+            <Button
+              asChild
+              className="bg-crimson-red hover:bg-warm-gold hover:text-charcoal text-soft-white font-sans uppercase tracking-wide px-6 md:px-8 py-2.5 md:py-3 text-sm md:text-base transition-colors font-semibold"
+            >
+              <a href="https://order.toasttab.com/online/northside10" target="_blank" rel="noopener noreferrer">
+                Order Now →
+              </a>
+            </Button>
+            <Button
+              asChild
+              variant="outline"
+              className="border-2 border-crimson-red text-crimson-red hover:bg-warm-gold hover:text-charcoal bg-soft-white font-sans uppercase tracking-wide px-6 md:px-8 py-2.5 md:py-3 text-sm md:text-base transition-colors font-semibold"
+            >
+              <a
+                href="https://www.opentable.com/r/northside-10-alexandria"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Reservations →
+              </a>
+            </Button>
+          </div>
 
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -60,28 +86,42 @@ export function Header() {
 
           <nav className="flex-1 overflow-y-auto bg-charcoal">
             <div className="container mx-auto px-6 py-8 space-y-6">
+              {/* Order Now and Reservations Buttons - Mobile - Styled for dark background */}
+              <div className="flex flex-col gap-4">
+                <Button
+                  asChild
+                  className="w-full bg-crimson-red hover:bg-warm-gold hover:text-charcoal text-soft-white font-sans uppercase tracking-wide px-8 py-6 text-base transition-colors font-semibold"
+                >
+                  <a
+                    href="https://order.toasttab.com/online/northside10"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Order Now →
+                  </a>
+                </Button>
+                <Button
+                  asChild
+                  variant="outline"
+                  className="w-full border-2 border-soft-white text-soft-white hover:bg-warm-gold hover:text-charcoal bg-charcoal font-sans uppercase tracking-wide px-8 py-6 text-base transition-colors font-semibold"
+                >
+                  <a
+                    href="https://www.opentable.com/r/northside-10-alexandria"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Reservations →
+                  </a>
+                </Button>
+              </div>
               <Link
                 href="/menus"
                 className="block text-xl font-sans text-soft-white uppercase tracking-wide hover:text-warm-gold transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Menus
-              </Link>
-              <a
-                href="https://order.toasttab.com/online/northside10"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block text-xl font-sans text-soft-white uppercase tracking-wide hover:text-warm-gold transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Order Online
-              </a>
-              <Link
-                href="/reservations"
-                className="block text-xl font-sans text-soft-white uppercase tracking-wide hover:text-warm-gold transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Reservations
               </Link>
               <Link
                 href="/catering"
