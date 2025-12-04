@@ -67,22 +67,6 @@ export function Header() {
               >
                 Menus
               </Link>
-              <a
-                href="https://order.toasttab.com/online/northside10"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block text-xl font-sans text-soft-white uppercase tracking-wide hover:text-warm-gold transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Order Online
-              </a>
-              <Link
-                href="/reservations"
-                className="block text-xl font-sans text-soft-white uppercase tracking-wide hover:text-warm-gold transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Reservations
-              </Link>
               <Link
                 href="/catering"
                 className="block text-xl font-sans text-soft-white uppercase tracking-wide hover:text-warm-gold transition-colors"
