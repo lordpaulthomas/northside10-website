@@ -33,7 +33,7 @@ export default function ReservationsPage() {
                     className="bg-soft-white hover:bg-warm-gold hover:text-charcoal text-crimson-red font-sans uppercase tracking-wide px-8 py-6 text-base md:text-lg transition-all duration-300 shadow-lg hover:shadow-xl font-semibold w-full sm:w-auto"
                   >
                     <a
-                      href="https://www.opentable.com/r/northside-10-alexandria"
+                      href="https://www.opentable.com/r/northside-10-reservations-alexandria?restref=1164220&lang=en-US&ot_source=Restaurant%20website"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center justify-center gap-2 md:gap-3"

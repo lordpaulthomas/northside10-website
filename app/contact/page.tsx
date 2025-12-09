@@ -52,7 +52,7 @@ export default function ContactPage() {
               </div>
 
               <a
-                href="https://www.opentable.com/r/northside-10-alexandria"
+                href="https://www.opentable.com/r/northside-10-reservations-alexandria?restref=1164220&lang=en-US&ot_source=Restaurant%20website"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block mt-8 md:mt-10 px-6 md:px-8 py-3 md:py-4 bg-warm-gold text-charcoal font-sans font-semibold text-base md:text-lg uppercase tracking-wide hover:bg-warm-gold/90 transition-colors"

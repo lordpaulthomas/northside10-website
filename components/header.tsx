@@ -40,7 +40,7 @@ export function Header() {
               className="border-2 border-crimson-red text-crimson-red hover:bg-warm-gold hover:text-charcoal bg-soft-white font-sans uppercase tracking-wide px-6 md:px-8 py-2.5 md:py-3 text-sm md:text-base transition-colors font-semibold"
             >
               <a
-                href="https://www.opentable.com/r/northside-10-alexandria"
+                href="https://www.opentable.com/r/northside-10-reservations-alexandria?restref=1164220&lang=en-US&ot_source=Restaurant%20website"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -107,7 +107,7 @@ export function Header() {
                   className="w-full border-2 border-soft-white text-soft-white hover:bg-warm-gold hover:text-charcoal bg-charcoal font-sans uppercase tracking-wide px-8 py-6 text-base transition-colors font-semibold"
                 >
                   <a
-                    href="https://www.opentable.com/r/northside-10-alexandria"
+                    href="https://www.opentable.com/r/northside-10-reservations-alexandria?restref=1164220&lang=en-US&ot_source=Restaurant%20website"
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setMobileMenuOpen(false)}
