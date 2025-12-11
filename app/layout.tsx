@@ -119,6 +119,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Google Analytics - placed immediately after head per Google's instructions */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-TPRER5ET1R"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-TPRER5ET1R');
+          `}
+        </Script>
+
         {/* Structured Data - Restaurant Schema */}
         <script
           type="application/ld+json"
@@ -185,20 +199,6 @@ export default function RootLayout({
         {children}
         <NewsletterPopup />
         <Analytics />
-        
-        {/* Google Analytics - must be in body for afterInteractive */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-K8GDH1WFR1"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-K8GDH1WFR1');
-          `}
-        </Script>
         
         {/* inKind Partnership Script */}
         <Script
