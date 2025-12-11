@@ -119,7 +119,74 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Google Analytics */}
+        {/* Structured Data - Restaurant Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Restaurant",
+              "name": "Northside 10",
+              "image": "https://thenorthside10.com/images/northside-logo-red.png",
+              "url": "https://thenorthside10.com",
+              "telephone": "+1-703-888-0032",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "10 East Glebe Road",
+                "addressLocality": "Alexandria",
+                "addressRegion": "VA",
+                "postalCode": "22305",
+                "addressCountry": "US"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": "38.8339",
+                "longitude": "-77.0565"
+              },
+              "priceRange": "$$",
+              "servesCuisine": ["American", "Southern", "Comfort Food"],
+              "menu": "https://thenorthside10.com/menus",
+              "acceptsReservations": "True",
+              "openingHoursSpecification": [
+                {
+                  "@type": "OpeningHoursSpecification",
+                  "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+                  "opens": "11:30",
+                  "closes": "22:30"
+                },
+                {
+                  "@type": "OpeningHoursSpecification",
+                  "dayOfWeek": "Friday",
+                  "opens": "11:30",
+                  "closes": "23:30"
+                },
+                {
+                  "@type": "OpeningHoursSpecification",
+                  "dayOfWeek": "Saturday",
+                  "opens": "10:00",
+                  "closes": "23:30"
+                },
+                {
+                  "@type": "OpeningHoursSpecification",
+                  "dayOfWeek": "Sunday",
+                  "opens": "10:00",
+                  "closes": "22:30"
+                }
+              ],
+              "sameAs": [
+                "https://www.facebook.com/northside10delray",
+                "https://www.instagram.com/northside10va/"
+              ]
+            })
+          }}
+        />
+      </head>
+      <body className={`${montserrat.variable} ${bodoniModa.variable} font-sans antialiased`}>
+        {children}
+        <NewsletterPopup />
+        <Analytics />
+        
+        {/* Google Analytics - must be in body for afterInteractive */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-K8GDH1WFR1"
           strategy="afterInteractive"
@@ -138,59 +205,6 @@ export default function RootLayout({
           src="https://inkindscript.com/inkind.js"
           strategy="afterInteractive"
         />
-        
-        {/* Structured Data - Restaurant Schema */}
-        <Script id="restaurant-schema" type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Restaurant",
-            "name": "Northside 10",
-            "image": "https://thenorthside10.com/images/northside-logo-red.png",
-            "url": "https://thenorthside10.com",
-            "telephone": "+1-XXX-XXX-XXXX",
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "YOUR STREET ADDRESS",
-              "addressLocality": "Alexandria",
-              "addressRegion": "VA",
-              "postalCode": "YOUR ZIP",
-              "addressCountry": "US"
-            },
-            "geo": {
-              "@type": "GeoCoordinates",
-              "latitude": "YOUR_LATITUDE",
-              "longitude": "YOUR_LONGITUDE"
-            },
-            "priceRange": "$$",
-            "servesCuisine": ["American", "Southern", "Comfort Food"],
-            "menu": "https://thenorthside10.com/menus",
-            "acceptsReservations": "True",
-            "openingHoursSpecification": [
-              {
-                "@type": "OpeningHoursSpecification",
-                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-                "opens": "11:00",
-                "closes": "22:00"
-              },
-              {
-                "@type": "OpeningHoursSpecification",
-                "dayOfWeek": ["Saturday", "Sunday"],
-                "opens": "10:00",
-                "closes": "23:00"
-              }
-            ],
-            "sameAs": [
-              "YOUR_FACEBOOK_URL",
-              "YOUR_INSTAGRAM_URL",
-              "YOUR_TWITTER_URL"
-            ]
-          })}
-        </Script>
-      </head>
-      <body className={`${montserrat.variable} ${bodoniModa.variable} font-sans antialiased`}>
-        {children}
-        <NewsletterPopup />
-        <Analytics />
       </body>
     </html>
   )
