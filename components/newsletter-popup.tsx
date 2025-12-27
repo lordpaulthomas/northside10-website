@@ -75,42 +75,51 @@ export function NewsletterPopup() {
           onClick={handleMinimize}
         />
 
-        {/* Popup */}
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
-          <div
-            className="bg-soft-white rounded-lg shadow-2xl max-w-md w-full max-h-[90vh] pointer-events-auto animate-in zoom-in-95 duration-300 relative flex flex-col overflow-hidden"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Close Button */}
-            <button
-              onClick={handleMinimize}
-              className="absolute top-2 right-2 p-2 text-charcoal/60 hover:text-charcoal transition-colors z-10 bg-soft-white/90 rounded-full"
-              aria-label="Close"
+        {/* Popup - Scrollable container for small screens */}
+        <div 
+          className="fixed inset-0 z-50 overflow-y-auto"
+          onClick={handleMinimize}
+        >
+          {/* Centering wrapper with padding for safe areas */}
+          <div className="min-h-full flex items-center justify-center p-4 sm:p-6">
+            <div
+              className="bg-soft-white rounded-lg shadow-2xl max-w-md w-full pointer-events-auto animate-in zoom-in-95 duration-300 relative my-4"
+              onClick={(e) => e.stopPropagation()}
             >
-              <X className="w-5 h-5" />
-            </button>
-
-            {/* Content - Flex container to fill space */}
-            <div className="flex flex-col h-full p-3 pt-12 overflow-hidden">
-              {/* Toast Tab Email Marketing Form - Takes all available space */}
-              <div className="flex-1 flex flex-col min-h-0 overflow-hidden">
-                <iframe
-                  src="https://www.toasttab.com/northside10/marketing-signup"
-                  className="w-full h-full border-0 rounded flex-1"
-                  title="Newsletter Signup"
-                  style={{ minHeight: "500px" }}
-                  scrolling="auto"
-                />
-              </div>
-
-              {/* Dismiss button */}
+              {/* Close Button - Sticky at top */}
               <button
-                type="button"
                 onClick={handleMinimize}
-                className="w-full text-charcoal/60 text-sm hover:text-charcoal transition-colors py-3 mt-2"
+                className="absolute top-2 right-2 p-2 text-charcoal/60 hover:text-charcoal transition-colors z-10 bg-soft-white/90 rounded-full"
+                aria-label="Close"
               >
-                No thanks, maybe later
+                <X className="w-5 h-5" />
               </button>
+
+              {/* Content */}
+              <div className="p-3 pt-12">
+                {/* Toast Tab Email Marketing Form */}
+                <div className="w-full">
+                  <iframe
+                    src="https://www.toasttab.com/northside10/marketing-signup"
+                    className="w-full border-0 rounded"
+                    title="Newsletter Signup"
+                    style={{ 
+                      height: "min(600px, calc(100vh - 180px))",
+                      minHeight: "400px"
+                    }}
+                    scrolling="yes"
+                  />
+                </div>
+
+                {/* Dismiss button */}
+                <button
+                  type="button"
+                  onClick={handleMinimize}
+                  className="w-full text-charcoal/60 text-sm hover:text-charcoal transition-colors py-3 mt-2"
+                >
+                  No thanks, maybe later
+                </button>
+              </div>
             </div>
           </div>
         </div>
