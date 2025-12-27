@@ -95,27 +95,21 @@ export function DailySpecialsDisplay({ type }: DailySpecialsDisplayProps) {
 
   if (specials.length === 0) {
     let message = "Today's special will be updated soon!"
-    let checkBackMessage = "Check back soon for updates"
     
     if (type === "lunch") {
       message = "Today's lunch special will be updated soon!"
-      checkBackMessage = "Check back this morning for updates"
     } else if (type === "dinner") {
       message = "Tonight's dinner special will be updated soon!"
-      checkBackMessage = "Check back this afternoon for updates"
     } else if (type === "rawbar") {
       message = "Today's Raw Bar Special will be updated soon!"
-      checkBackMessage = "Check back for today's fresh seafood selections"
     } else if (type === "tacothursday") {
       message = "Today's Taco Thursday Special will be updated soon!"
-      checkBackMessage = "Check back for today's taco selections"
     }
     
     return (
       <div className="text-center py-12 bg-light-grey/20 rounded-lg border-2 border-dashed border-light-grey">
         <div className="text-6xl mb-4">🍽️</div>
         <p className="text-charcoal/70 text-lg">{message}</p>
-        <p className="text-charcoal/50 text-sm mt-2">{checkBackMessage}</p>
       </div>
     )
   }
@@ -123,30 +117,27 @@ export function DailySpecialsDisplay({ type }: DailySpecialsDisplayProps) {
   return (
     <div className="space-y-6">
       {specials.map((item) => (
-        <div key={item.guid} className="bg-soft-white rounded-lg shadow-lg p-8 border border-light-grey">
-          <div className="text-center">
-            {item.outOfStock && (
-              <div className="bg-brick-red text-soft-white px-4 py-2 rounded-full text-sm font-semibold mb-4 inline-block">
-                OUT OF STOCK
-              </div>
-            )}
-            
-            <div className="space-y-4">
-              <div className="flex justify-between items-start gap-4 mb-4">
-                <h3 className="font-serif text-2xl md:text-3xl text-charcoal">{item.name}</h3>
-                {item.price > 0 && (
-                  <span className="font-serif text-2xl md:text-3xl text-charcoal whitespace-nowrap">
-                    ${item.price.toFixed(2)}
-                  </span>
-                )}
-              </div>
-              {item.description && (
-                <p className="text-base md:text-lg text-charcoal/70 leading-relaxed">
-                  {item.description}
-                </p>
-              )}
+        <div key={item.guid} className="group">
+          {item.outOfStock && (
+            <div className="bg-brick-red text-soft-white px-3 py-1 rounded-full text-xs font-semibold mb-2 inline-block uppercase tracking-wide">
+              Out of Stock
             </div>
+          )}
+          <div className="flex justify-between items-start gap-4 mb-2">
+            <h3 className="font-sans font-semibold text-base md:text-lg text-charcoal uppercase tracking-wide flex-1">
+              {item.name}
+            </h3>
+            {item.price > 0 && (
+              <span className="font-sans font-bold text-base md:text-lg text-charcoal whitespace-nowrap">
+                {Math.floor(item.price) === item.price ? item.price : item.price.toFixed(2)}
+              </span>
+            )}
           </div>
+          {item.description && (
+            <p className="text-sm md:text-base text-charcoal/70 leading-relaxed">
+              {item.description}
+            </p>
+          )}
         </div>
       ))}
     </div>
