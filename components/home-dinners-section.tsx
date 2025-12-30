@@ -27,7 +27,7 @@ export function HomeDinnersSection() {
           {/* Image */}
           <div className="relative h-[400px] md:h-[600px] rounded-lg overflow-hidden shadow-xl">
             <Image
-              src="/images/northside-brick-wall.png"
+              src="/images/exterior-edt.001.png"
               alt="Northside 10 logo on brick wall"
               fill
               className="object-cover"
