@@ -4,7 +4,7 @@ import { useState } from "react"
 import Image from "next/image"
 import { DailySpecialsDisplay } from "@/components/daily-specials-display"
 
-type MenuCategory = "brunch" | "dinner" | "desserts" | "kids" | "specials"
+type MenuCategory = "brunch" | "dinner" | "greens" | "desserts" | "kids" | "specials"
 
 export function MenusContent() {
   const [activeTab, setActiveTab] = useState<MenuCategory>("specials")
@@ -40,10 +40,10 @@ export function MenusContent() {
       {/* Menu Navigation Buttons */}
       <div className="bg-warm-gray py-8 md:py-12">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 max-w-5xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-6xl mx-auto">
             <button
               onClick={() => setActiveTab("brunch")}
-              className={`font-serif text-lg md:text-xl px-6 py-4 border-2 rounded transition-all ${
+              className={`font-serif text-lg md:text-xl px-4 py-4 border-2 rounded transition-all ${
                 activeTab === "brunch"
                   ? "bg-crimson-red border-crimson-red text-soft-white"
                   : "bg-transparent border-charcoal text-charcoal hover:border-crimson-red hover:text-crimson-red"
@@ -53,7 +53,7 @@ export function MenusContent() {
             </button>
             <button
               onClick={() => setActiveTab("dinner")}
-              className={`font-serif text-lg md:text-xl px-6 py-4 border-2 rounded transition-all ${
+              className={`font-serif text-lg md:text-xl px-4 py-4 border-2 rounded transition-all ${
                 activeTab === "dinner"
                   ? "bg-crimson-red border-crimson-red text-soft-white"
                   : "bg-transparent border-charcoal text-charcoal hover:border-crimson-red hover:text-crimson-red"
@@ -62,8 +62,18 @@ export function MenusContent() {
               Dinner
             </button>
             <button
+              onClick={() => setActiveTab("greens")}
+              className={`font-serif text-base md:text-lg px-3 py-4 border-2 rounded transition-all ${
+                activeTab === "greens"
+                  ? "bg-crimson-red border-crimson-red text-soft-white"
+                  : "bg-transparent border-charcoal text-charcoal hover:border-crimson-red hover:text-crimson-red"
+              }`}
+            >
+              Greens & Proteins
+            </button>
+            <button
               onClick={() => setActiveTab("desserts")}
-              className={`font-serif text-lg md:text-xl px-6 py-4 border-2 rounded transition-all ${
+              className={`font-serif text-lg md:text-xl px-4 py-4 border-2 rounded transition-all ${
                 activeTab === "desserts"
                   ? "bg-crimson-red border-crimson-red text-soft-white"
                   : "bg-transparent border-charcoal text-charcoal hover:border-crimson-red hover:text-crimson-red"
@@ -73,7 +83,7 @@ export function MenusContent() {
             </button>
             <button
               onClick={() => setActiveTab("kids")}
-              className={`font-serif text-lg md:text-xl px-6 py-4 border-2 rounded transition-all ${
+              className={`font-serif text-lg md:text-xl px-4 py-4 border-2 rounded transition-all ${
                 activeTab === "kids"
                   ? "bg-crimson-red border-crimson-red text-soft-white"
                   : "bg-transparent border-charcoal text-charcoal hover:border-crimson-red hover:text-crimson-red"
@@ -83,7 +93,7 @@ export function MenusContent() {
             </button>
             <button
               onClick={() => setActiveTab("specials")}
-              className={`font-serif text-lg md:text-xl px-6 py-4 border-2 rounded transition-all col-span-2 md:col-span-1 ${
+              className={`font-serif text-base md:text-lg px-3 py-4 border-2 rounded transition-all ${
                 activeTab === "specials"
                   ? "bg-crimson-red border-crimson-red text-soft-white"
                   : "bg-transparent border-charcoal text-charcoal hover:border-crimson-red hover:text-crimson-red"
@@ -99,6 +109,7 @@ export function MenusContent() {
       <div className="container mx-auto px-4 py-12 md:py-16">
         {activeTab === "brunch" && <BrunchMenu />}
         {activeTab === "dinner" && <DinnerMenu />}
+        {activeTab === "greens" && <GreensProteinsMenu />}
         {activeTab === "desserts" && <DessertsMenu />}
         {activeTab === "kids" && <KidsMenu />}
         {activeTab === "specials" && <SpecialsMenu />}
@@ -468,6 +479,99 @@ function DinnerMenu() {
           <div>
             <h3 className="font-sans font-semibold text-lg md:text-xl text-charcoal mb-2">TACO THURSDAY</h3>
             <p className="text-base text-charcoal/80">Time to Fiesta</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// Greens & Proteins Menu Component
+function GreensProteinsMenu() {
+  return (
+    <div className="max-w-6xl mx-auto">
+      <div className="text-center mb-12">
+        <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-charcoal">Good Greens & Proteins</h1>
+        <p className="font-sans text-sm md:text-base text-charcoal/70 uppercase tracking-wider mt-4">
+          Balanced Meals for Better Feels
+        </p>
+      </div>
+
+      {/* Small Plates / Starters */}
+      <div className="mb-12">
+        <h2 className="font-serif text-2xl md:text-3xl mb-6 pb-2 border-b-2 border-brick-red">SMALL PLATES</h2>
+        <div className="grid md:grid-cols-2 gap-x-12 gap-y-6">
+          <MenuItem
+            name="BUFFALO CAULIFLOWER BITES"
+            price="12"
+            description="with steakhouse ranch"
+          />
+          <MenuItem
+            name="PORTUGUESE MUSSELS"
+            price="16"
+            description="PEI mussels sauteed with wine, cilantro, garlic, tomatoes"
+          />
+          <MenuItem
+            name="GRILLED CHICKEN STRIPS"
+            price="13"
+            description="with peach pepper jelly"
+          />
+          <MenuItem
+            name="DEVILED EGGS"
+            price="14"
+            description="deviled eggs, creole mustard, capers"
+          />
+        </div>
+      </div>
+
+      {/* Fresh Pick Plates Section */}
+      <div className="mb-12">
+        <div className="bg-light-grey/30 border-2 border-brick-red rounded-lg p-6 md:p-8 text-center">
+          <h2 className="font-serif text-3xl md:text-4xl text-charcoal mb-2">Fresh Pick Plates</h2>
+          <p className="font-sans text-2xl md:text-3xl font-bold text-brick-red mb-4">$19</p>
+     
+          <p className="font-sans text-base md:text-lg text-charcoal font-semibold">
+            Pick Any One Protein and Two Sides
+          </p>
+        </div>
+      </div>
+
+      <div className="grid md:grid-cols-2 gap-12 md:gap-16">
+        {/* Power Proteins */}
+        <div>
+          <h2 className="font-serif text-2xl md:text-3xl mb-6 pb-2 border-b-2 border-brick-red">POWER PROTEINS</h2>
+          <div className="space-y-6">
+            <MenuItem
+              name="GRILLED OR BLACKENED SALMON"
+              price=""
+            />
+            <MenuItem
+              name="GRILLED OR BLACKENED CHICKEN BREAST"
+              price=""
+            />
+            <MenuItem
+              name="FLANK STEAK"
+              price="+8.00"
+            />
+          </div>
+          <div className="mt-8 pt-6 border-t border-light-grey">
+            <p className="text-sm md:text-base text-charcoal/80 italic">
+              Top any protein with grilled shrimp (+7.00)
+            </p>
+          </div>
+        </div>
+
+        {/* Balanced Sides */}
+        <div>
+          <h2 className="font-serif text-2xl md:text-3xl mb-6 pb-2 border-b-2 border-brick-red">BALANCED SIDES (Pick 2)</h2>
+          <div className="space-y-4">
+            <MenuItem name="BAKED POTATO" price="" />
+            <MenuItem name="ASPARAGUS" price="" />
+            <MenuItem name="GREEN BEANS" price="" />
+            <MenuItem name="MIXED GREEN SALAD" price="" />
+            <MenuItem name="BROCCOLI" price="" />
+            <MenuItem name="RICE" price="" />
+            <MenuItem name="MIXED VEGETABLES" price="" />
           </div>
         </div>
       </div>
