@@ -11,7 +11,7 @@ let sharedDataTimestamp: number = 0
 const CLIENT_CACHE_DURATION = 2 * 60 * 1000 // 2 minutes
 
 interface DailySpecialsDisplayProps {
-  type: "lunch" | "dinner" | "rawbar" | "tacothursday"
+  type: "lunch" | "dinner" | "brunch" | "rawbar" | "tacothursday"
 }
 
 export function DailySpecialsDisplay({ type }: DailySpecialsDisplayProps) {
@@ -54,6 +54,8 @@ export function DailySpecialsDisplay({ type }: DailySpecialsDisplayProps) {
           special = data.lunchSpecial
         } else if (type === "dinner") {
           special = data.dinnerSpecial
+        } else if (type === "brunch") {
+          special = data.brunchSpecial
         } else if (type === "rawbar") {
           special = data.rawBarSpecial
         } else if (type === "tacothursday") {
@@ -100,6 +102,8 @@ export function DailySpecialsDisplay({ type }: DailySpecialsDisplayProps) {
       message = "Today's lunch special will be updated soon!"
     } else if (type === "dinner") {
       message = "Tonight's dinner special will be updated soon!"
+    } else if (type === "brunch") {
+      message = "Today's brunch special will be updated soon!"
     } else if (type === "rawbar") {
       message = "Today's Raw Bar Special will be updated soon!"
     } else if (type === "tacothursday") {

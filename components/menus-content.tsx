@@ -649,8 +649,13 @@ function KidsMenu() {
 
 // Daily Specials Menu Component
 function SpecialsMenu() {
-  // Get current day of week (0 = Sunday, 3 = Wednesday, 4 = Thursday)
+  // Get current day of week (0 = Sunday, 6 = Saturday, 3 = Wednesday, 4 = Thursday)
   const dayOfWeek = new Date().getDay()
+  
+  // Weekend days for brunch
+  const isSaturday = dayOfWeek === 6
+  const isSunday = dayOfWeek === 0
+  const isWeekend = isSaturday || isSunday
   
   // Wednesday = 3, Thursday = 4
   const isWednesday = dayOfWeek === 3
@@ -664,6 +669,27 @@ function SpecialsMenu() {
           Check back daily for our latest specials, updated by our chef
         </p>
       </div>
+
+      {/* Weekend: Brunch Specials + Dinner Specials */}
+      {isWeekend && (
+        <>
+          {/* Dynamic Brunch Special */}
+          <div className="mb-12">
+            <h2 className="font-serif text-3xl md:text-4xl mb-6 pb-2 border-b-2 border-brick-red text-center">
+              Today's Brunch Specials
+            </h2>
+            <DailySpecialsDisplay type="brunch" />
+          </div>
+
+          {/* Dynamic Dinner Special */}
+          <div className="mb-12">
+            <h2 className="font-serif text-3xl md:text-4xl mb-6 pb-2 border-b-2 border-brick-red text-center">
+              Tonight's Dinner Special
+            </h2>
+            <DailySpecialsDisplay type="dinner" />
+          </div>
+        </>
+      )}
 
       {/* Wednesday: Lunch Specials + Raw Bar Specials */}
       {isWednesday && (
@@ -696,8 +722,8 @@ function SpecialsMenu() {
         </div>
       )}
 
-      {/* Other Days: Lunch & Dinner Specials */}
-      {!isWednesday && !isThursday && (
+      {/* Other Weekdays (Mon, Tue, Fri): Lunch & Dinner Specials */}
+      {!isWeekend && !isWednesday && !isThursday && (
         <>
           {/* Dynamic Lunch Special */}
           <div className="mb-12">

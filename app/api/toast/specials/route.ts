@@ -101,6 +101,9 @@ export async function GET() {
     const dinnerMenu = menus.find((menu: any) => 
       menu.name?.toLowerCase() === 'dinner specials'
     )
+    const brunchMenu = menus.find((menu: any) => 
+      menu.name?.toLowerCase() === 'brunch specials'
+    )
     const rawBarMenu = menus.find((menu: any) => 
       menu.name?.toLowerCase() === 'raw bar specials'
     )
@@ -110,6 +113,7 @@ export async function GET() {
     
     console.log("Lunch menu found:", lunchMenu?.name, "with", lunchMenu?.menuGroups?.length || 0, "groups")
     console.log("Dinner menu found:", dinnerMenu?.name, "with", dinnerMenu?.menuGroups?.length || 0, "groups")
+    console.log("Brunch menu found:", brunchMenu?.name, "with", brunchMenu?.menuGroups?.length || 0, "groups")
     console.log("Raw Bar menu found:", rawBarMenu?.name, "with", rawBarMenu?.menuGroups?.length || 0, "groups")
     console.log("Taco Thursday menu found:", tacoThursdayMenu?.name, "with", tacoThursdayMenu?.menuGroups?.length || 0, "groups")
     
@@ -142,6 +146,28 @@ export async function GET() {
         if (group?.menuItems) {
           group.menuItems.forEach((item: any) => {
             dinnerItems.push({
+              id: item.multiLocationId || item.guid,
+              name: item.name,
+              description: item.description || '',
+              price: item.price || 0,
+              guid: item.guid,
+              visibility: item.visibility || [],
+              salesCategory: item.salesCategory?.name || 'Food',
+              image: item.image,
+              outOfStock: item.outOfStock || false
+            })
+          })
+        }
+      })
+    }
+    
+    // Get items from the Brunch Specials menu
+    const brunchItems: any[] = []
+    if (brunchMenu?.menuGroups) {
+      brunchMenu.menuGroups.forEach((group: any) => {
+        if (group?.menuItems) {
+          group.menuItems.forEach((item: any) => {
+            brunchItems.push({
               id: item.multiLocationId || item.guid,
               name: item.name,
               description: item.description || '',
@@ -203,6 +229,7 @@ export async function GET() {
     
     console.log("Lunch items found:", lunchItems.length)
     console.log("Dinner items found:", dinnerItems.length)
+    console.log("Brunch items found:", brunchItems.length)
     console.log("Raw Bar items found:", rawBarItems.length)
     console.log("Taco Thursday items found:", tacoThursdayItems.length)
     
@@ -218,6 +245,13 @@ export async function GET() {
       description: dinnerMenu?.description || '',
       items: dinnerItems,
       guid: dinnerMenu?.guid || ''
+    }
+    
+    const brunchSpecial = {
+      name: 'Brunch Specials',
+      description: brunchMenu?.description || '',
+      items: brunchItems,
+      guid: brunchMenu?.guid || ''
     }
     
     const rawBarSpecial = {
@@ -238,9 +272,10 @@ export async function GET() {
       success: true,
       lunchSpecial: lunchSpecial || null,
       dinnerSpecial: dinnerSpecial || null,
+      brunchSpecial: brunchSpecial || null,
       rawBarSpecial: rawBarSpecial || null,
       tacoThursdaySpecial: tacoThursdaySpecial || null,
-      totalItems: lunchItems.length + dinnerItems.length + rawBarItems.length + tacoThursdayItems.length,
+      totalItems: lunchItems.length + dinnerItems.length + brunchItems.length + rawBarItems.length + tacoThursdayItems.length,
       message: `Successfully loaded daily specials from ToastTab`,
       cachedAt: new Date().toISOString()
     }
