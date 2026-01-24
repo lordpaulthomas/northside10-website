@@ -4,10 +4,10 @@ import { useState } from "react"
 import Image from "next/image"
 import { DailySpecialsDisplay } from "@/components/daily-specials-display"
 
-type MenuCategory = "brunch" | "dinner" | "greens" | "desserts" | "kids" | "specials"
+type MenuCategory = "restaurant-week" | "brunch" | "dinner" | "greens" | "desserts" | "kids" | "specials"
 
 export function MenusContent() {
-  const [activeTab, setActiveTab] = useState<MenuCategory>("specials")
+  const [activeTab, setActiveTab] = useState<MenuCategory>("restaurant-week")
 
   return (
     <div className="bg-soft-white">
@@ -40,7 +40,17 @@ export function MenusContent() {
       {/* Menu Navigation Buttons */}
       <div className="bg-warm-gray py-8 md:py-12">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-6xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 max-w-7xl mx-auto">
+            <button
+              onClick={() => setActiveTab("restaurant-week")}
+              className={`font-serif text-base md:text-lg px-3 py-4 border-2 rounded transition-all ${
+                activeTab === "restaurant-week"
+                  ? "bg-crimson-red border-crimson-red text-soft-white"
+                  : "bg-transparent border-charcoal text-charcoal hover:border-crimson-red hover:text-crimson-red"
+              }`}
+            >
+              Restaurant Week
+            </button>
             <button
               onClick={() => setActiveTab("brunch")}
               className={`font-serif text-lg md:text-xl px-4 py-4 border-2 rounded transition-all ${
@@ -107,12 +117,112 @@ export function MenusContent() {
 
       {/* Menu Content */}
       <div className="container mx-auto px-4 py-12 md:py-16">
+        {activeTab === "restaurant-week" && <RestaurantWeekMenu />}
         {activeTab === "brunch" && <BrunchMenu />}
         {activeTab === "dinner" && <DinnerMenu />}
         {activeTab === "greens" && <GreensProteinsMenu />}
         {activeTab === "desserts" && <DessertsMenu />}
         {activeTab === "kids" && <KidsMenu />}
         {activeTab === "specials" && <SpecialsMenu />}
+      </div>
+    </div>
+  )
+}
+
+// Restaurant Week Menu Component - styled to match other menus
+function RestaurantWeekMenu() {
+  return (
+    <div className="max-w-6xl mx-auto">
+      <div className="text-center mb-12">
+        <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl mb-4 text-charcoal">Restaurant Week</h1>
+        <p className="font-sans text-sm md:text-base text-charcoal/70 uppercase tracking-wider">
+          Choice of 1 Appetizer, Entrée & Dessert for $45
+        </p>
+      </div>
+
+      <div className="grid md:grid-cols-2 gap-12 md:gap-16">
+        {/* Appetizers */}
+        <div>
+          <h2 className="font-serif text-2xl md:text-3xl mb-6 pb-2 border-b-2 border-brick-red">APPETIZERS</h2>
+          <div className="space-y-6">
+            <MenuItem
+              name="PARMESAN OYSTERS"
+              price=""
+              description="two local bevens oysters broiled with a parmesan garlic butter"
+            />
+            <MenuItem
+              name="SHORT RIB POTATO SKINS"
+              price=""
+              description="two potato skins stuffed with braised short ribs, topped with cheese curds, served with a ranch and chive sour cream"
+            />
+            <MenuItem
+              name="FRIED GREEN TOMATO SLIDERS"
+              price=""
+              description="two fried green tomato sliders topped with bacon, spinach, and served with house made remoulade"
+            />
+            <MenuItem
+              name="WINTER SALAD"
+              price=""
+              description="spring mix, apples, walnuts, cranberry, roasted butternut squash, feta cheese, maple dijon vinaigrette"
+            />
+          </div>
+        </div>
+
+        {/* Entrees */}
+        <div>
+          <h2 className="font-serif text-2xl md:text-3xl mb-6 pb-2 border-b-2 border-brick-red">ENTRÉES</h2>
+          <div className="space-y-6">
+            <MenuItem
+              name="CAJUN ROCKFISH"
+              price=""
+              description="pan seared local rockfish topped with a shrimp etouffee over cajun dirty rice"
+            />
+            <MenuItem
+              name="FRIED CHICKEN ORZO"
+              price=""
+              description="garlic butter chicken thighs, creamy orzo, asparagus, marsala gravy"
+            />
+            <MenuItem
+              name="SPICY BOLOGNESE PAPPARDELLE"
+              price=""
+              description="veal, pork sausage, bolognese, burrata, fresh basil"
+            />
+            <MenuItem
+              name="GRILLED VEGGIE RISOTTO"
+              price=""
+              description="winter veggies, parmesan cream, risotto"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Desserts */}
+      <div className="mt-12">
+        <h2 className="font-serif text-2xl md:text-3xl mb-6 pb-2 border-b-2 border-brick-red">DESSERTS</h2>
+        <div className="grid md:grid-cols-2 gap-x-12 gap-y-6">
+          <MenuItem
+            name="BREAD PUDDING"
+            price=""
+            description="served with vanilla ice cream"
+          />
+          <MenuItem
+            name="CINNAMON ROLL SUNDAE"
+            price=""
+            description=""
+          />
+          <MenuItem
+            name="DOUBLE CHOCOLATE BROWNIE BITE"
+            price=""
+            description="served with vanilla ice cream"
+          />
+        </div>
+      </div>
+
+      {/* Price Note */}
+      <div className="mt-12 text-center">
+        <div className="inline-block bg-brick-red/10 border-2 border-brick-red rounded-lg px-8 py-4">
+          <p className="font-serif text-2xl md:text-3xl text-brick-red font-semibold">$45 per person</p>
+        </div>
       </div>
     </div>
   )

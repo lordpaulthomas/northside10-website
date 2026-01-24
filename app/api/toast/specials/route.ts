@@ -110,8 +110,12 @@ export async function GET() {
     const tacoThursdayMenu = menus.find((menu: any) => 
       menu.name?.toLowerCase() === 'taco thursday'
     )
+    const restaurantWeekMenu = menus.find((menu: any) => 
+      menu.name?.toLowerCase().includes('restaurant week')
+    )
     
     console.log("Lunch menu found:", lunchMenu?.name, "with", lunchMenu?.menuGroups?.length || 0, "groups")
+    console.log("Restaurant Week menu found:", restaurantWeekMenu?.name, "with", restaurantWeekMenu?.menuGroups?.length || 0, "groups")
     console.log("Dinner menu found:", dinnerMenu?.name, "with", dinnerMenu?.menuGroups?.length || 0, "groups")
     console.log("Brunch menu found:", brunchMenu?.name, "with", brunchMenu?.menuGroups?.length || 0, "groups")
     console.log("Raw Bar menu found:", rawBarMenu?.name, "with", rawBarMenu?.menuGroups?.length || 0, "groups")
@@ -227,7 +231,38 @@ export async function GET() {
       })
     }
     
+    // Get items from the Restaurant Week menu (with groups preserved)
+    const restaurantWeekGroups: any[] = []
+    if (restaurantWeekMenu?.menuGroups) {
+      restaurantWeekMenu.menuGroups.forEach((group: any) => {
+        const groupItems: any[] = []
+        if (group?.menuItems) {
+          group.menuItems.forEach((item: any) => {
+            groupItems.push({
+              id: item.multiLocationId || item.guid,
+              name: item.name,
+              description: item.description || '',
+              price: item.price || 0,
+              guid: item.guid,
+              visibility: item.visibility || [],
+              salesCategory: item.salesCategory?.name || 'Food',
+              image: item.image,
+              outOfStock: item.outOfStock || false
+            })
+          })
+        }
+        if (groupItems.length > 0) {
+          restaurantWeekGroups.push({
+            name: group.name,
+            description: group.description || '',
+            items: groupItems
+          })
+        }
+      })
+    }
+    
     console.log("Lunch items found:", lunchItems.length)
+    console.log("Restaurant Week groups found:", restaurantWeekGroups.length)
     console.log("Dinner items found:", dinnerItems.length)
     console.log("Brunch items found:", brunchItems.length)
     console.log("Raw Bar items found:", rawBarItems.length)
@@ -267,6 +302,13 @@ export async function GET() {
       items: tacoThursdayItems,
       guid: tacoThursdayMenu?.guid || ''
     }
+    
+    const restaurantWeek = {
+      name: restaurantWeekMenu?.name || 'Restaurant Week',
+      description: restaurantWeekMenu?.description || '',
+      groups: restaurantWeekGroups,
+      guid: restaurantWeekMenu?.guid || ''
+    }
 
     const result = {
       success: true,
@@ -275,6 +317,7 @@ export async function GET() {
       brunchSpecial: brunchSpecial || null,
       rawBarSpecial: rawBarSpecial || null,
       tacoThursdaySpecial: tacoThursdaySpecial || null,
+      restaurantWeek: restaurantWeek || null,
       totalItems: lunchItems.length + dinnerItems.length + brunchItems.length + rawBarItems.length + tacoThursdayItems.length,
       message: `Successfully loaded daily specials from ToastTab`,
       cachedAt: new Date().toISOString()
