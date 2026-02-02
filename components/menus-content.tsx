@@ -137,6 +137,8 @@ export function MenusContent() {
   )
 }
 
+const FRESH_PICK_DEAL_DESCRIPTION = "Pick any one protein and two sides for $19."
+
 function MenuItem({ item }: { item: ToastMenuItem }) {
   const priceStr =
     item.price != null && item.price > 0
@@ -144,6 +146,8 @@ function MenuItem({ item }: { item: ToastMenuItem }) {
         ? String(item.price)
         : item.price.toFixed(2)
       : ""
+  const isFreshPick = /fresh\s*pick/i.test(item.name?.trim() ?? "")
+  const description = isFreshPick ? FRESH_PICK_DEAL_DESCRIPTION : (item.description ?? "")
   return (
     <div className="group">
       {item.outOfStock && (
@@ -159,8 +163,8 @@ function MenuItem({ item }: { item: ToastMenuItem }) {
           <span className="font-sans font-bold text-base md:text-lg text-charcoal whitespace-nowrap">{priceStr}</span>
         )}
       </div>
-      {item.description && (
-        <p className="text-sm md:text-base text-charcoal/70 leading-relaxed">{item.description}</p>
+      {description && (
+        <p className="text-sm md:text-base text-charcoal/70 leading-relaxed">{description}</p>
       )}
     </div>
   )
