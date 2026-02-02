@@ -113,9 +113,16 @@ export function MenusContent() {
                 </p>
               )}
             </div>
-            <div className="grid md:grid-cols-2 gap-12 md:gap-16">
+            <div
+              className={
+                activeMenu.groups.length === 1 ? "flex flex-col" : "grid md:grid-cols-2 gap-12 md:gap-16"
+              }
+            >
               {activeMenu.groups.map((group) => (
-                <div key={group.guid}>
+                <div
+                  key={group.guid}
+                  className={activeMenu.groups.length === 1 ? "w-full md:max-w-2xl md:mx-auto" : undefined}
+                >
                   <h2 className="font-serif text-2xl md:text-3xl mb-6 pb-2 border-b-2 border-brick-red">
                     {group.name}
                   </h2>

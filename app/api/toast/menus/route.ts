@@ -119,11 +119,15 @@ function normalizeItem(item: {
 
 function normalizeGroup(group: { guid?: string; name?: string; description?: string; menuItems?: unknown[] }) {
   const menuItems = group.menuItems ?? []
+  const itemsWithPrice = menuItems.filter((i: Record<string, unknown>) => {
+    const p = (i as { price?: number }).price
+    return typeof p === "number" && p > 0
+  })
   return {
     guid: group.guid ?? "",
     name: group.name ?? "",
     description: group.description ?? "",
-    items: menuItems.map((i: Record<string, unknown>) => normalizeItem(i as Parameters<typeof normalizeItem>[0])),
+    items: itemsWithPrice.map((i: Record<string, unknown>) => normalizeItem(i as Parameters<typeof normalizeItem>[0])),
   }
 }
 
