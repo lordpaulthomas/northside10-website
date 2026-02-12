@@ -32,7 +32,9 @@ export function MenusContent() {
     loadMenus()
   }, [])
 
+  const SWEETHEART_TAB_ID = "sweetheart-menu"
   const activeMenu = menus.find((m) => m.guid === activeTab)
+  const isSweetheart = activeTab === SWEETHEART_TAB_ID
 
   return (
     <div className="bg-soft-white">
@@ -70,6 +72,16 @@ export function MenusContent() {
             <p className="text-center text-brick-red font-sans">Unable to load menus. Please try again later.</p>
           ) : (
             <div className="flex flex-wrap justify-center gap-3 max-w-6xl mx-auto">
+              <button
+                onClick={() => setActiveTab(SWEETHEART_TAB_ID)}
+                className={`font-serif text-base md:text-lg px-4 py-3 border-2 rounded transition-all ${
+                  isSweetheart
+                    ? "bg-crimson-red border-crimson-red text-soft-white"
+                    : "bg-transparent border-charcoal text-charcoal hover:border-crimson-red hover:text-crimson-red"
+                }`}
+              >
+                Sweetheart Menu
+              </button>
               {menus.map((menu) => (
                 <button
                   key={menu.guid}
@@ -103,7 +115,8 @@ export function MenusContent() {
           </div>
         )}
 
-        {!loading && !error && activeMenu && (
+        {!loading && !error && isSweetheart && <SweetheartMenu />}
+        {!loading && !error && activeMenu && !isSweetheart && (
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl mb-4 text-charcoal">{activeMenu.name}</h1>
@@ -145,6 +158,76 @@ export function MenusContent() {
 }
 
 const FRESH_PICK_DEAL_DESCRIPTION = "Pick any one protein and two sides for $19."
+
+function SweetheartMenu() {
+  return (
+    <div className="max-w-2xl mx-auto">
+      <div className="text-center mb-12">
+        <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl mb-2 text-charcoal">NORTHSIDE 10</h1>
+        <p className="font-serif text-2xl md:text-3xl text-charcoal/90">Sweetheart Menu</p>
+      </div>
+
+      <div className="space-y-10">
+        <section>
+          <h2 className="font-serif text-2xl md:text-3xl mb-6 pb-2 border-b-2 border-brick-red">APPETIZERS</h2>
+          <div className="space-y-6">
+            <MenuItem item={{ guid: "sweetheart-1", name: "Bevens Oysters on the Half Shell", price: 14 }} />
+            <MenuItem item={{ guid: "sweetheart-2", name: "Tuna Tartare with Avocado", price: 14 }} />
+          </div>
+        </section>
+
+        <section>
+          <h2 className="font-serif text-2xl md:text-3xl mb-6 pb-2 border-b-2 border-brick-red">ENTREES</h2>
+          <div className="space-y-6">
+            <MenuItem
+              item={{
+                guid: "sweetheart-3",
+                name: "Beef Tenderloin and Crab Cake",
+                price: 38,
+                description: "Served with smashed potatoes, asparagus, and a hollandaise sauce",
+              }}
+            />
+            <MenuItem
+              item={{
+                guid: "sweetheart-4",
+                name: "BBQ Shrimp Risotto",
+                price: 26,
+                description: "Grilled BBQ shrimp served on top of a creole risotto",
+              }}
+            />
+            <MenuItem
+              item={{
+                guid: "sweetheart-5",
+                name: "Porcini Mushroom Gnocchi",
+                price: 25,
+                description: "Sautéed porcini mushrooms tossed with gnocchi in a garlic cream sauce topped with asiago cheese",
+              }}
+            />
+          </div>
+        </section>
+
+        <section>
+          <h2 className="font-serif text-2xl md:text-3xl mb-6 pb-2 border-b-2 border-brick-red">DESSERT</h2>
+          <div className="space-y-6">
+            <MenuItem item={{ guid: "sweetheart-6", name: "Chocolate Peanut Butter Cheesecake", price: 12 }} />
+          </div>
+        </section>
+
+        <div className="border-2 border-brick-red rounded-lg p-6 text-center bg-soft-white">
+          <p className="font-serif text-xl md:text-2xl text-charcoal mb-1">Two Hearts, One Bottle</p>
+          <p className="font-sans font-bold text-2xl md:text-3xl text-brick-red mb-2">$30</p>
+          <p className="font-sans text-sm md:text-base text-charcoal/80">
+            For any bottle of wine with a purchase of any two entrees
+          </p>
+        </div>
+
+        <p className="font-sans text-center font-semibold text-charcoal uppercase tracking-wider text-sm md:text-base">
+          Make reservations on OpenTable or call 703-888-0032
+        </p>
+      </div>
+    </div>
+  )
+}
 
 function MenuItem({ item }: { item: ToastMenuItem }) {
   const priceStr =
