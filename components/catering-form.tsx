@@ -1,10 +1,13 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef } from "react"
+
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/mgoljlev"
 
 export default function CateringForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
+  const formRef = useRef<HTMLFormElement>(null)
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -12,34 +15,22 @@ export default function CateringForm() {
     setSubmitStatus("idle")
 
     const formData = new FormData(e.currentTarget)
-    const data = {
-      name: `${formData.get("firstName")} ${formData.get("lastName") || ""}`.trim(),
-      email: formData.get("email") as string,
-      phone: formData.get("phone") as string,
-      eventDate: formData.get("eventDate") as string,
-      guestCount: formData.get("guestCount") as string,
-      eventType: formData.get("eventType") as string,
-      message: formData.get("message") as string,
-    }
 
     try {
-      const response = await fetch("/api/catering", {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
       })
 
-      const result = await response.json()
-
-      if (response.ok && result.success) {
+      if (response.ok) {
         setSubmitStatus("success")
-        // Reset form safely
-        setTimeout(() => {
-          const form = e.currentTarget
-          if (form) form.reset()
-        }, 100)
+        formRef.current?.reset()
       } else {
-        console.error("API error:", result)
+        const result = await response.json()
+        console.error("Formspree error:", result)
         setSubmitStatus("error")
       }
     } catch (error) {
@@ -57,7 +48,10 @@ export default function CateringForm() {
         Fill out the form below and we'll get back to you shortly
       </p>
 
-      <form id="catering-form" onSubmit={handleSubmit} className="space-y-6">
+      <form id="catering-form" ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+        {/* Hidden field for email subject */}
+        <input type="hidden" name="_subject" value="New Catering & Event Inquiry - Northside 10" />
+        
         {/* First Name and Last Name Row */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>

@@ -153,6 +153,13 @@ export function Header() {
               >
                 The Sweetside Cafe
               </a>
+              <Link
+                href="/coffee-club"
+                className="block text-xl font-sans text-warm-gold uppercase tracking-wide hover:text-soft-white transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                VIP Coffee Club
+              </Link>
 
               <Link
                 href="/gallery"
