@@ -50,7 +50,7 @@ export function HeroSection() {
   }, [])
 
   return (
-    <section className="relative w-full h-[70vh] md:h-[80vh] mt-[73px]">
+    <section className="relative w-full h-[70vh] md:h-[80vh]">
       {heroImages.map((image, index) => (
         <Image
           key={image.src}
