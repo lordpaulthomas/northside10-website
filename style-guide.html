@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Northside 10 — Style Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        .sg-container{max-width:1200px;margin:120px auto 80px;padding:0 24px}
+        .sg-header{margin-bottom:40px}
+        .sg-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+        .sg-card{background:#fff;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.12);padding:24px}
+        .swatch{height:64px;border-radius:10px;margin-bottom:12px;border:1px solid #e8e8e8}
+        .code{font-family:monospace;color:#666}
+        .type-sample h1,.type-sample h2,.type-sample h3{margin-bottom:10px}
+        .row{display:flex;gap:16px;flex-wrap:wrap}
+        .sg-divider{height:1px;background:#ececec;margin:24px 0}
+        .title{font-family:'Bodoni Moda',serif;font-size:42px;color:var(--color-charcoal)}
+        .subtitle{color:#666}
+        .dark-demo{background:#0B0B0B;color:#fff;border-radius:14px;padding:24px}
+    </style>
+    <script>
+        // nothing required; styles are imported from site theme
+    </script>
+    <link rel="icon" href="assets/logos/Northside 10 - 2 Logo.jpg" />
+    <meta name="description" content="Northside 10 website style guide" />
+    <meta name="robots" content="noindex" />
+</head>
+<body>
+    <div class="sg-container">
+        <div class="sg-header">
+            <div class="title">Northside 10 — Web Style Guide</div>
+            <p class="subtitle">A quick reference for colors, typography, and core UI components used across the website.</p>
+        </div>
+
+        <!-- Colors -->
+        <h2 class="about-text h2" style="margin:16px 0 8px;color:var(--color-red)">1) Colors</h2>
+        <div class="sg-grid">
+            <div class="sg-card">
+                <div class="swatch" style="background:#B22222"></div>
+                <strong>Crimson Red</strong>
+                <div class="code">#B22222 — Primary CTA, highlights</div>
+            </div>
+            <div class="sg-card">
+                <div class="swatch" style="background:#0B0B0B"></div>
+                <strong>Charcoal</strong>
+                <div class="code">#0B0B0B — Headlines/Text on light</div>
+            </div>
+            <div class="sg-card">
+                <div class="swatch" style="background:#2E2E2E"></div>
+                <strong>Dark Grey</strong>
+                <div class="code">#2E2E2E — Cards/accents (sparingly)</div>
+            </div>
+            <div class="sg-card">
+                <div class="swatch" style="background:#F9F9F9;border:1px solid #e8e8e8"></div>
+                <strong>Soft White</strong>
+                <div class="code">#F9F9F9 — Page background</div>
+            </div>
+            <div class="sg-card">
+                <div class="swatch" style="background:#D4AF37"></div>
+                <strong>Warm Gold</strong>
+                <div class="code">#D4AF37 — Hover, premium accents</div>
+            </div>
+            <div class="sg-card">
+                <div class="swatch" style="background:#CCCCCC"></div>
+                <strong>Light Grey</strong>
+                <div class="code">#CCCCCC — Dividers, subtle UI</div>
+            </div>
+        </div>
+
+        <div class="sg-divider"></div>
+
+        <!-- Typography -->
+        <h2 class="about-text h2" style="margin:16px 0 8px;color:var(--color-red)">2) Typography</h2>
+        <div class="sg-grid type-sample">
+            <div class="sg-card">
+                <h1 style="font-family:'Bodoni Moda',serif">Bodoni (Bodoni Moda) — H1</h1>
+                <p class="code">48–56px; used for hero and section titles</p>
+            </div>
+            <div class="sg-card">
+                <h2 style="font-family:'Bodoni Moda',serif">Bodoni — H2</h2>
+                <p class="code">32–40px; used for secondary headings</p>
+            </div>
+            <div class="sg-card">
+                <h3 style="font-family:'Bodoni Moda',serif">Bodoni — H3</h3>
+                <p class="code">24–28px; used for small section titles</p>
+            </div>
+            <div class="sg-card">
+                <p style="font-family:Montserrat,system-ui">Montserrat — Body copy 16–18px. Clean and highly readable. Use Montserrat Semi-Bold for small uppercase labels.</p>
+            </div>
+        </div>
+
+        <div class="sg-divider"></div>
+
+        <!-- Buttons -->
+        <h2 class="about-text h2" style="margin:16px 0 8px;color:var(--color-red)">3) Buttons</h2>
+        <div class="row" style="margin-bottom:16px">
+            <a class="btn btn-primary" href="#">Primary Button</a>
+            <a class="btn btn-secondary" href="#">Secondary Button</a>
+        </div>
+        <div class="sg-card dark-demo">
+            <div class="row"><a class="btn btn-primary" href="#">Primary on Dark</a><a class="btn btn-secondary" href="#" style="border-color:#fff;color:#fff">Secondary on Dark</a></div>
+        </div>
+
+        <div class="sg-divider"></div>
+
+        <!-- Cards -->
+        <h2 class="about-text h2" style="margin:16px 0 8px;color:var(--color-red)">4) Cards</h2>
+        <div class="sg-grid">
+            <div class="menu-category">
+                <div class="menu-category-image"><img src="assets/photos/northside/poutine.jpg" alt="Demo" /></div>
+                <h4>Menu Card</h4>
+            </div>
+            <div class="menu-category">
+                <div class="menu-category-image"><img src="assets/photos/northside/fried_chicken_sandwich.jpg" alt="Demo" /></div>
+                <h4>Menu Card</h4>
+            </div>
+        </div>
+
+        <div class="sg-divider"></div>
+
+        <!-- Specials Cards -->
+        <h2 class="about-text h2" style="margin:16px 0 8px;color:var(--color-red)">5) Specials Cards</h2>
+        <section class="specials-card-section" style="margin-top:8px">
+            <div class="container">
+                <div class="specials-card">
+                    <div class="specials-card-image">
+                        <img src="assets/photos/northside/tacos.jpg" alt="Taco Thursday">
+                    </div>
+                    <div class="specials-card-content">
+                        <h2>Every Thursday</h2>
+                        <h3>TACO THURSDAY</h3>
+                        <p>Build your own flight and mix up the flavors. Grab 1 for $5 or 3 for $14. It's the perfect excuse to bring friends and sample your way through the night.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="sg-divider"></div>
+
+        <p class="subtitle">Questions or tweaks? Reply with notes here and we can update the tokenized theme site-wide.</p>
+    </div>
+</body>
+</html>
+
+

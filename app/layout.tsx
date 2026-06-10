@@ -27,33 +27,34 @@ export const metadata: Metadata = {
   description:
     "Northside 10 restaurant in Alexandria, VA - Experience bold Southern-inspired comfort food in a laid-back atmosphere. Daily specials, weekend brunch, craft cocktails, and warm hospitality. Located in the heart of Alexandria, Virginia. Dine-in or catering available.",
   keywords: [
-    "Alexandria, VA",
-    "Alexandria restaurant",
-    "Alexandria dining",
-    "Alexandria food",
-    "Alexandria bars",
-    "Alexandria nightlife",
-    "Alexandria events",
-    "Alexandria culture",
     "Northside 10",
-    "Delray",
-    "Virginia",
-    "Virginia restaurant",
-    "Virginia dining",
-    "Virginia food",
-    "Virginia bars",
-    "Virginia nightlife",
-    "restaurant",
-    "Southern food",
-    "comfort food",
-    "brunch",
-    "daily specials",
-    "craft cocktails",
-    "catering",
-    "Virginia restaurant",
-    "American cuisine",
-    "local restaurant",
-    "weekend brunch",
+    "Northside 10 restaurant",
+    "Northside 10 Alexandria",
+    "southern food Alexandria VA",
+    "southern restaurant Alexandria",
+    "southern comfort food Alexandria VA",
+    "Del Ray restaurant",
+    "Del Ray restaurants",
+    "Del Ray dining",
+    "best restaurant Del Ray",
+    "best southern food Alexandria",
+    "restaurants near me Alexandria VA",
+    "Alexandria VA restaurant",
+    "Alexandria Virginia dining",
+    "comfort food Alexandria",
+    "brunch Alexandria VA",
+    "weekend brunch Del Ray",
+    "craft cocktails Alexandria",
+    "catering Alexandria VA",
+    "southern food catering Virginia",
+    "private dining Alexandria",
+    "daily specials Alexandria",
+    "American restaurant Alexandria VA",
+    "family restaurant Alexandria",
+    "bar and grill Alexandria VA",
+    "soul food Alexandria VA",
+    "fried chicken Alexandria",
+    "southern cooking near me",
   ],
   authors: [{ name: "Northside 10" }],
   creator: "Northside 10",
@@ -141,9 +142,15 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Restaurant",
               "name": "Northside 10",
-              "image": "https://thenorthside10.com/images/northside-logo-red.png",
+              "alternateName": "Northside 10 Restaurant",
+              "description": "Southern comfort food restaurant in Del Ray, Alexandria, VA. Bold flavors, weekend brunch, daily specials, craft cocktails, and warm hospitality.",
+              "image": [
+                "https://thenorthside10.com/images/northside-logo-red.png",
+                "https://opengraph.b-cdn.net/production/images/e778a7a2-7147-4d24-ae3e-f7e3d9e9ab0d.png?token=ZtevPaX1iCX3JZ7YZGMf1F3_nofSkSgWX7OzC4RPB9c&height=675&width=1200&expires=33298995759"
+              ],
               "url": "https://thenorthside10.com",
               "telephone": "+1-703-888-0032",
+              "email": "northside10va@gmail.com",
               "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "10 East Glebe Road",
@@ -158,9 +165,32 @@ export default function RootLayout({
                 "longitude": "-77.0565"
               },
               "priceRange": "$$",
-              "servesCuisine": ["American", "Southern", "Comfort Food"],
+              "servesCuisine": ["Southern", "American", "Comfort Food", "Soul Food", "Brunch"],
               "menu": "https://thenorthside10.com/menus",
+              "hasMenu": {
+                "@type": "Menu",
+                "url": "https://thenorthside10.com/menus",
+                "name": "Northside 10 Menu"
+              },
               "acceptsReservations": "True",
+              "reservations": {
+                "@type": "ReserveAction",
+                "target": {
+                  "@type": "EntryPoint",
+                  "urlTemplate": "https://www.opentable.com/r/northside-10-alexandria",
+                  "actionPlatform": ["http://schema.org/DesktopWebPlatform", "http://schema.org/MobileWebPlatform"]
+                }
+              },
+              "paymentAccepted": "Cash, Credit Card, Debit Card",
+              "currenciesAccepted": "USD",
+              "areaServed": {
+                "@type": "City",
+                "name": "Alexandria",
+                "containedInPlace": {
+                  "@type": "State",
+                  "name": "Virginia"
+                }
+              },
               "openingHoursSpecification": [
                 {
                   "@type": "OpeningHoursSpecification",
@@ -189,7 +219,8 @@ export default function RootLayout({
               ],
               "sameAs": [
                 "https://www.facebook.com/northside10delray",
-                "https://www.instagram.com/northside10va/"
+                "https://www.instagram.com/northside10va/",
+                "https://www.opentable.com/r/northside-10-alexandria"
               ]
             })
           }}

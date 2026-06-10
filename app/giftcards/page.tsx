@@ -2,9 +2,9 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 
 export const metadata = {
-  title: "Gift Cards",
+  title: "Gift Cards | Give the Gift of Southern Food",
   description:
-    "Give the gift of great food! Purchase Northside 10 gift cards online and share the experience of Southern comfort food with friends and family.",
+    "Buy Northside 10 gift cards online. Perfect for birthdays, holidays, or anyone who loves Southern comfort food in Alexandria, VA. Digital delivery available.",
 }
 
 export default function GiftCardsPage() {

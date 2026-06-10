@@ -2,6 +2,18 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Phone, Calendar } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Reservations | Book a Table at Northside 10",
+  description:
+    "Reserve a table at Northside 10 in Alexandria, VA through OpenTable. Southern comfort food, weekend brunch, and craft cocktails in Del Ray. Walk-ins welcome.",
+  openGraph: {
+    title: "Reservations | Northside 10 - Alexandria VA",
+    description:
+      "Reserve a table at Northside 10 in Alexandria, VA through OpenTable. Southern comfort food, weekend brunch, and craft cocktails in Del Ray.",
+  },
+}
 
 export default function ReservationsPage() {
   return (

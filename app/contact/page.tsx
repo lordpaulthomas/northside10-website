@@ -3,6 +3,18 @@ import Image from "next/image"
 import ContactForm from "@/components/contact-form"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Contact Us | Hours, Location & Directions",
+  description:
+    "Contact Northside 10 at 10 East Glebe Road in Del Ray, Alexandria, VA 22305. Call (703) 888-0032 for reservations, hours, directions, and general inquiries.",
+  openGraph: {
+    title: "Contact Us | Northside 10 - Alexandria VA",
+    description:
+      "Contact Northside 10 at 10 East Glebe Road in Del Ray, Alexandria, VA 22305. Call (703) 888-0032 for reservations, hours, and directions.",
+  },
+}
 
 export default function ContactPage() {
   return (

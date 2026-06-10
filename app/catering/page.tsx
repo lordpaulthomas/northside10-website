@@ -2,6 +2,18 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import CateringForm from "@/components/catering-form"
 import Image from "next/image"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Catering & Events | Southern Food Catering Alexandria VA",
+  description:
+    "Book Northside 10 for your next event or let us cater it. Southern comfort food catering for parties, corporate events, and private dining in Alexandria, Virginia.",
+  openGraph: {
+    title: "Catering & Events | Northside 10 - Alexandria VA",
+    description:
+      "Book Northside 10 for your next event or let us cater it. Southern comfort food catering for parties, corporate events, and private dining.",
+  },
+}
 
 export default function CateringPage() {
   return (

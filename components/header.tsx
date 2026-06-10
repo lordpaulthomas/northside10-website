@@ -117,6 +117,13 @@ export function Header() {
                 </Button>
               </div>
               <Link
+                href="/events"
+                className="block text-xl font-sans text-warm-gold uppercase tracking-wide hover:text-soft-white transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Events
+              </Link>
+              <Link
                 href="/menus"
                 className="block text-xl font-sans text-soft-white uppercase tracking-wide hover:text-warm-gold transition-colors"
                 onClick={() => setMobileMenuOpen(false)}

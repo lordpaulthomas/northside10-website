@@ -3,9 +3,9 @@ import { Footer } from "@/components/footer"
 import Image from "next/image"
 
 export const metadata = {
-  title: "Rewards Program",
+  title: "Rewards Program | Earn Points Every Visit",
   description:
-    "Join the Northside 10 Rewards Program and earn points with every visit. Enjoy exclusive perks, special offers, and delicious rewards.",
+    "Join the Northside 10 Rewards Program. Earn points every time you dine with us in Del Ray, Alexandria, VA. Redeem for free food and exclusive perks.",
 }
 
 export default function RewardsPage() {

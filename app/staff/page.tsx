@@ -135,13 +135,21 @@ export default function StaffPage() {
             <Coffee className="w-6 h-6 text-warm-gold" />
             <h1 className="font-serif text-xl text-soft-white">Drip Club Members</h1>
           </div>
-          <button
-            onClick={refreshMembers}
-            disabled={loading}
-            className="font-sans text-sm text-warm-gold hover:text-soft-white transition-colors disabled:opacity-50"
-          >
-            {loading ? "Loading..." : "Refresh"}
-          </button>
+          <div className="flex items-center gap-4">
+            <a
+              href="/staff/events"
+              className="font-sans text-sm text-soft-white/40 hover:text-warm-gold transition-colors"
+            >
+              Event Orders
+            </a>
+            <button
+              onClick={refreshMembers}
+              disabled={loading}
+              className="font-sans text-sm text-warm-gold hover:text-soft-white transition-colors disabled:opacity-50"
+            >
+              {loading ? "Loading..." : "Refresh"}
+            </button>
+          </div>
         </div>
       </div>
 

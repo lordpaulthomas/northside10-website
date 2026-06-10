@@ -1,6 +1,18 @@
 import Image from "next/image"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Photo Gallery | Southern Food & Cocktails",
+  description:
+    "See what's cooking at Northside 10 in Alexandria, VA. Photos of our Southern comfort dishes, craft cocktails, and the restaurant. Located in Del Ray.",
+  openGraph: {
+    title: "Photo Gallery | Northside 10 - Alexandria VA",
+    description:
+      "See what's cooking at Northside 10 in Alexandria, VA. Photos of our Southern comfort dishes, craft cocktails, and the restaurant.",
+  },
+}
 
 const galleryImages = [
   {
