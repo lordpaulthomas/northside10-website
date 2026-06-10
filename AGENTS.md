@@ -223,3 +223,13 @@ Full production dress rehearsal completed with a real purchase: live checkout, b
 1. Add an entry to `EVENTS` in `lib/events.ts` (new slug, price, capacity, dates, flyer in `public/images/events/`).
 2. Add the `/events/[slug]` URL to `app/sitemap.ts`.
 3. That's it — banner, listing, checkout, emails, check-in all key off the config.
+
+### Planned: self-serve event creation via Sanity CMS
+
+Goal: let the restaurant create and publish events themselves (no developer, no code change). Builds on the existing CMS idea in `docs/SANITY_INTEGRATION_PLAN.md` (drafted for menus/news, not yet implemented).
+
+- **Sanity schema `event`** mirroring the `SiteEvent` interface in `lib/events.ts`: slug, title, subtitle, description, start/end datetimes, ticket name + price, capacity, maxPerOrder, optional add-on (name, price, maxPerTicket), flyer image, highlights, includes list. Validation rules on price/capacity so staff can't enter bad data.
+- **Swap the data source, keep everything else**: replace the hardcoded `EVENTS` array with a Sanity fetch (`getEvent(slug)` / `listEvents()` become async queries). Checkout, webhook, QR, emails, check-in, and the staff dashboard all read from event config already, so none of that logic changes. Flyer images come from Sanity's CDN instead of `public/images/events/`.
+- **Watch out for**: the webhook and checkout API must fetch the event server-side by slug (no client-trusted prices — already the case); sitemap should generate event URLs dynamically from Sanity; banner auto-hide logic keys off `endsAt`; consider draft/published state so staff can stage an event before sales open (a `salesOpenAt` field would also allow scheduled on-sale times).
+- **Studio access**: host Sanity Studio at `/studio` (or Sanity's hosted studio) with logins for restaurant managers.
+- Rough effort: a focused session (schema + data-layer swap + studio setup + retest of checkout/webhook path in test mode).
