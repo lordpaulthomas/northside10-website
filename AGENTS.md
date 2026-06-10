@@ -139,7 +139,9 @@ The Sweetside VIP Coffee Club is a **$20/mo Stripe subscription** sold via a har
 4. Keep staff/admin routes out of nav and `app/sitemap.ts`; protect with `STAFF_PIN` pattern until real auth exists.
 5. Stripe: secret key server-side only; pin the API version; prefer Checkout Sessions + webhooks for anything that needs fulfillment (see Events plan below).
 
-## Event ticketing system — BUILT June 2026 (first event: Kegs & Legs, June 20 2026)
+## Event ticketing system — LIVE since June 10 2026 (first event: Kegs & Legs, June 20 2026)
+
+> ⚠️ **Apex DNS issue (pre-existing, discovered at launch):** `thenorthside10.com` has a CNAME at the zone apex and **no A record** — it does not resolve on strict resolvers (8.8.8.8, 1.1.1.1). Only `www.thenorthside10.com` reliably works. All generated ticket links/QRs therefore use **www** (see `SITE_URL` in `lib/stripe.ts`). Proper fix: Vercel → Settings → Domains → follow the apex A-record instructions and replace the CNAME in Google Cloud DNS. Sitemap/JSON-LD still reference the apex and should be revisited after the DNS fix.
 
 Self-hosted Eventbrite replacement. **No database — Stripe is the ticket store** (PaymentIntent metadata holds ticket state). One QR per order ("Admits N"), not per attendee.
 
