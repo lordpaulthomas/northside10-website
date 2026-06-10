@@ -17,9 +17,11 @@ export function getStripe(): Stripe {
   return new Stripe(getStripeKey())
 }
 
+// www is intentional: the apex domain has a broken DNS record (CNAME at apex,
+// no A record) and does not resolve on strict resolvers like 8.8.8.8/1.1.1.1.
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ||
-  (process.env.NODE_ENV === "production" ? "https://thenorthside10.com" : "http://localhost:3000")
+  (process.env.NODE_ENV === "production" ? "https://www.thenorthside10.com" : "http://localhost:3000")
 
 export interface TicketOrder {
   /** Checkout Session id (cs_...) — the public ticket id encoded in the QR */
