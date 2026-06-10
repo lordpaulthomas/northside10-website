@@ -112,11 +112,15 @@ export async function POST(request: Request) {
       })
     }
 
+    const piDescription =
+      `${event.title}: ${tickets} ticket${tickets === 1 ? "" : "s"}` +
+      (event.addOn && addOns > 0 ? ` + ${addOns} ${event.addOn.name.toLowerCase()}${addOns === 1 ? "" : "s"}` : "")
+
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       line_items: lineItems,
       metadata,
-      payment_intent_data: { metadata },
+      payment_intent_data: { metadata, description: piDescription },
       phone_number_collection: { enabled: true },
       expires_at: Math.floor(Date.now() / 1000) + 30 * 60,
       success_url: `${SITE_URL}/tickets/{CHECKOUT_SESSION_ID}`,
