@@ -207,6 +207,17 @@ stripe trigger checkout.session.completed --api-key $STRIPE_TEST_SECRET_KEY \
 
 Test cards: `4242 4242 4242 4242`. Note the Stripe CLI on this machine is logged into a *different* account (lachainedc) — always pass `--api-key`.
 
+### Launch verification (June 10 2026)
+
+Full production dress rehearsal completed with a real purchase: live checkout, branded email from contact@thenorthside10.com, phone QR scan, check-in, double-scan rejection, then refund + archive. Notes:
+
+- Live webhook endpoint: `we_1Tgqsr4CKdpJWVJBrVY7tCGW` → `https://www.thenorthside10.com/api/stripe/webhook` (must stay on **www**, see DNS warning above).
+- Owner sale notifications go to the `CONTACT_EMAIL` list in Vercel (same list as the contact form).
+- PaymentIntents get a friendly description ("Kegs & Legs: 2 tickets + 1 extra crab leg cluster") for the Stripe dashboard.
+- Refund procedure: refund in Stripe dashboard, then set the PI's metadata `event_slug` to `archived-test-order` (or any non-event value) to free the seat and kill the QR.
+- Stripe Checkout branding (logo + colors) configured in Stripe dashboard Settings → Branding.
+- Copy style: no em dashes in user-facing text.
+
 ### Adding the next event
 
 1. Add an entry to `EVENTS` in `lib/events.ts` (new slug, price, capacity, dates, flyer in `public/images/events/`).
