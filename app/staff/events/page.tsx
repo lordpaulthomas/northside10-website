@@ -147,7 +147,7 @@ export default function StaffEventsPage() {
               <Shield className="w-8 h-8 text-warm-gold" />
             </div>
             <h1 className="font-serif text-3xl text-soft-white mb-2">Event Orders</h1>
-            <p className="font-sans text-soft-white/50 text-sm">{EVENT_TITLE} — Staff Access</p>
+            <p className="font-sans text-soft-white/50 text-sm">{EVENT_TITLE} Staff Access</p>
           </div>
           <div className="space-y-4">
             <input
@@ -181,7 +181,7 @@ export default function StaffEventsPage() {
         <div className="max-w-4xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Ticket className="w-6 h-6 text-warm-gold" />
-            <h1 className="font-serif text-xl text-soft-white">{EVENT_TITLE} — Orders</h1>
+            <h1 className="font-serif text-xl text-soft-white">{EVENT_TITLE} Orders</h1>
           </div>
           <div className="flex items-center gap-4">
             <Link
@@ -314,8 +314,8 @@ export default function StaffEventsPage() {
         </div>
 
         <p className="font-sans text-xs text-soft-white/30 text-center mt-8">
-          New orders can take up to a minute to appear. Pull refresh before doubting a guest&apos;s
-          ticket — or scan their QR code, which is always instant.
+          New orders can take up to a minute to appear. Hit refresh before doubting a guest&apos;s
+          ticket, or just scan their QR code, which is always instant.
         </p>
       </div>
     </div>

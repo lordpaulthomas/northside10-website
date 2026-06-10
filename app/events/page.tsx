@@ -9,7 +9,7 @@ import { EVENTS, isEventOver, formatPrice } from "@/lib/events"
 export const metadata: Metadata = {
   title: "Events | Northside 10",
   description:
-    "Upcoming events at Northside 10 in Alexandria, VA. Seafood boils, live music, beer features and more — get your tickets online.",
+    "Upcoming events at Northside 10 in Alexandria, VA. Seafood boils, live music, beer features and more. Get your tickets online.",
 }
 
 export default function EventsPage() {
@@ -30,7 +30,7 @@ export default function EventsPage() {
         <section className="container mx-auto px-4 py-12 md:py-16">
           {upcoming.length === 0 && (
             <p className="font-sans text-dark-grey text-center py-12">
-              No upcoming events right now — follow us on social or join the newsletter to hear
+              No upcoming events right now. Follow us on social or join the newsletter to hear
               about the next one first.
             </p>
           )}
@@ -66,7 +66,7 @@ export default function EventsPage() {
                     </p>
                   </div>
                   <span className="inline-flex items-center gap-2 font-sans font-semibold uppercase tracking-wide text-sm bg-crimson-red group-hover:bg-warm-gold group-hover:text-charcoal text-soft-white px-6 py-3.5 rounded-lg transition-colors self-start">
-                    Get Tickets — {formatPrice(event.priceCents)}
+                    Get Tickets &middot; {formatPrice(event.priceCents)}
                     <ArrowRight className="w-4 h-4" />
                   </span>
                 </div>

@@ -91,7 +91,7 @@ export async function POST(request: Request) {
       ? resend.emails.send({
           from: fromAddress,
           to: [email],
-          subject: `Your tickets — ${siteEvent.title} at Northside 10`,
+          subject: `Your tickets for ${siteEvent.title} at Northside 10`,
           attachments: [{ filename: "northside10-ticket-qr.png", content: qrPng.toString("base64") }],
           html: `
 <div style="background:#F9F9F9;padding:24px 12px;font-family:Montserrat,Helvetica,Arial,sans-serif;">
@@ -104,7 +104,7 @@ export async function POST(request: Request) {
     </div>
     <div style="padding:0 28px 24px;text-align:center;">
       <p style="color:#F9F9F9;font-size:16px;margin:0 0 2px;font-weight:600;">${siteEvent.dateLabel} &bull; ${siteEvent.timeLabel}</p>
-      <p style="color:#CCCCCC;font-size:14px;margin:0;">Northside 10 &mdash; 10 East Glebe Road, Alexandria, VA 22305</p>
+      <p style="color:#CCCCCC;font-size:14px;margin:0;">Northside 10 &middot; 10 East Glebe Road, Alexandria, VA 22305</p>
     </div>
     <div style="background:#F9F9F9;margin:0 28px;border-radius:12px;padding:24px;text-align:center;">
       <p style="color:#B22222;font-size:13px;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin:0 0 4px;">Admits ${ticketQty}</p>
@@ -150,7 +150,7 @@ export async function POST(request: Request) {
           to: recipientEmails,
           subject: `🎟️ ${siteEvent.title}: ${ticketQty} ticket${ticketQty === 1 ? "" : "s"} sold to ${name}`,
           html: `
-<h2>New ticket order — ${siteEvent.title}</h2>
+<h2>New ticket order: ${siteEvent.title}</h2>
 <p><strong>Name:</strong> ${name}</p>
 <p><strong>Email:</strong> ${email ?? "—"}</p>
 <p><strong>Phone:</strong> ${session.customer_details?.phone ?? "—"}</p>

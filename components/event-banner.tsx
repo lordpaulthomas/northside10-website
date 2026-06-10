@@ -20,7 +20,7 @@ export function EventBanner() {
       <div className="py-2.5 px-4 relative">
         <div className="container mx-auto flex items-center justify-center gap-2 md:gap-3 text-xs md:text-sm pr-8">
           <span className="font-sans text-warm-gold font-semibold shrink-0">
-            🦀 {event.title} &mdash; {event.dateLabel}
+            🦀 {event.title} &middot; {event.dateLabel}
           </span>
           <span className="font-sans text-soft-white/90 hidden md:inline">
             ${event.priceCents / 100} seafood boil, live music, Bell&apos;s on draft.

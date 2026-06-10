@@ -36,14 +36,14 @@ export const EVENTS: SiteEvent[] = [
     title: "Kegs & Legs",
     subtitle: "Featuring Bell's Two Hearted & Bell's Oberon",
     description:
-      "Your neighborhood spot. Good people, cold drinks, big moments. Join us for a $45 all-in seafood boil featuring Bell's Two Hearted Ale and Bell's Oberon on draft, with live music from Rook Richards. Limited seating — get your tickets before they're gone.",
+      "Your neighborhood spot. Good people, cold drinks, big moments. Join us for a $45 all-in seafood boil featuring Bell's Two Hearted Ale and Bell's Oberon on draft, with live music from Rook Richards. Seating is limited, so grab your tickets before they're gone.",
     dateLabel: "Saturday, June 20th",
-    timeLabel: "1:00 PM – 5:00 PM",
+    timeLabel: "1:00 PM to 5:00 PM",
     startsAt: "2026-06-20T13:00:00-04:00",
     endsAt: "2026-06-20T17:00:00-04:00",
-    ticketName: "Kegs & Legs — Seafood Boil Ticket",
+    ticketName: "Kegs & Legs Seafood Boil Ticket",
     ticketDescription:
-      "Admits one. Includes the full seafood boil: shrimp, corn, sausage, potatoes & crab legs. Sat June 20, 1–5 PM at Northside 10.",
+      "Admits one. Includes the full seafood boil: shrimp, corn, sausage, potatoes & crab legs. Sat June 20, 1-5 PM at Northside 10.",
     priceCents: 4500,
     capacity: 50,
     maxPerOrder: 8,
@@ -56,11 +56,11 @@ export const EVENTS: SiteEvent[] = [
     },
     flyerImage: "/images/events/kegs-and-legs-flyer.png",
     flyerAlt:
-      "Kegs and Legs event flyer — $45 seafood boil featuring Bell's Two Hearted and Bell's Oberon, Saturday June 20th, 1–5 PM at Northside 10",
+      "Kegs and Legs event flyer, $45 seafood boil featuring Bell's Two Hearted and Bell's Oberon, Saturday June 20th, 1-5 PM at Northside 10",
     highlights: [
-      "Live music with Rook Richards, 12–3 PM",
+      "Live music with Rook Richards, 12-3 PM",
       "Bell's Two Hearted & Bell's Oberon on draft",
-      "Limited seating — ticket required",
+      "Limited seating, ticket required",
     ],
     includes: ["Shrimp", "Corn", "Sausage", "Potatoes", "Crab Legs"],
   },

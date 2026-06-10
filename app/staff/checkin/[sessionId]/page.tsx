@@ -190,7 +190,7 @@ export default function CheckinPage() {
           <div className="bg-green-700 rounded-xl p-6 text-center mb-6">
             <CheckCircle2 className="w-14 h-14 text-soft-white mx-auto mb-2" />
             <p className="font-serif text-3xl text-soft-white">CHECKED IN</p>
-            <p className="font-sans text-soft-white/80 text-sm mt-1">Welcome them in — enjoy!</p>
+            <p className="font-sans text-soft-white/80 text-sm mt-1">Welcome them in!</p>
           </div>
         ) : alreadyCheckedIn ? (
           <div className="bg-crimson-red rounded-xl p-6 text-center mb-6">

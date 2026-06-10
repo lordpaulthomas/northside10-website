@@ -35,7 +35,7 @@ export default async function TicketPage({ params }: { params: { sessionId: stri
             <h1 className="font-serif text-3xl text-charcoal mb-4">Payment Not Completed</h1>
             <p className="font-sans text-dark-grey mb-8">
               This order hasn&apos;t been paid yet. If you canceled checkout, you can try again
-              below — tickets aren&apos;t reserved until payment is complete.
+              below. Tickets aren&apos;t reserved until payment is complete.
             </p>
             <Link
               href={`/events/${event.slug}`}
@@ -135,7 +135,7 @@ export default async function TicketPage({ params }: { params: { sessionId: stri
               A copy of your ticket was emailed to <strong>{order.email}</strong>
             </p>
             <p className="font-sans text-sm text-dark-grey">
-              Bookmark this page — your QR works right from here.
+              Bookmark this page, your QR works right from here.
             </p>
             <p className="font-sans text-sm text-dark-grey flex items-center justify-center gap-1.5">
               <Phone className="w-3.5 h-3.5" /> Questions? (703) 888-0032

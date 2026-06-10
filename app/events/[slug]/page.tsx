@@ -14,7 +14,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   const event = getEvent(params.slug)
   if (!event) return {}
   return {
-    title: `${event.title} — ${event.dateLabel} | Northside 10`,
+    title: `${event.title} | ${event.dateLabel} | Northside 10`,
     description: event.description,
     openGraph: {
       title: `${event.title} at Northside 10`,
@@ -114,7 +114,7 @@ export default async function EventPage({ params }: { params: { slug: string } }
                 <div className="bg-charcoal rounded-2xl p-8 text-center">
                   <p className="font-serif text-3xl text-soft-white mb-2">This Event Has Ended</p>
                   <p className="font-sans text-light-grey text-sm">
-                    Thanks to everyone who came out — see you at the next one!
+                    Thanks to everyone who came out. See you at the next one!
                   </p>
                 </div>
               ) : (
